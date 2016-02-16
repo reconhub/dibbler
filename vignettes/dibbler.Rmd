@@ -44,3 +44,34 @@ library("dibbler")
 A short demo
 ------------------
 Here is a short demonstration of the package using a dummy dataset.
+
+```{r load}
+library(igraph)
+library(dibbler)
+
+## GENERATE DATA
+set.seed(1)
+g1 <- make_tree(20, 3)
+
+## need this hack for named vertices
+temp <- data.frame(lapply(
+igraph2data.frame(g1), as.character),
+stringsAsFactors=FALSE)
+g1 <- graph.data.frame(temp)
+
+## find times
+tips <- which(degree(g1, mode="out")==0)
+grp <- factor(sample(letters[1:4], replace=TRUE, size=length(tips)))
+names(grp) <- tips
+
+
+## RUN DIBBLER
+out <- dibbler(dibbler.data(g1, grp))
+```
+
+Checking and plotting the output:
+```{r dibbler}
+plot(out$graph, vertex.label="")
+```
+
+

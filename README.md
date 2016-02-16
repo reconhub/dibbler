@@ -5,6 +5,9 @@
 
 
 
+```
+## Error in parse_block(g[-1], g[1], params.src): duplicate label 'load'
+```
 
 
 *dibbler*: Investigation of food-borne disease outbreaks.
