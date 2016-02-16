@@ -15,4 +15,14 @@ The function convert a directed graph with the network format into an igraph obj
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}
 }
+\seealso{
+\describe{
+Conversions in dibbler include:
+\item{\code{\link{network2data.frame}}}{}
+\item{\code{\link{igraph2data.frame}}}{}
+\item{\code{\link{igraph2data.frame}}}{}
+\item{\code{\link{igraph2network}}}{}
+\item{\code{\link{network2igraph}}}{}
+}
+}
 

@@ -53,6 +53,15 @@ network2data.frame <- function(x){
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
+#' @seealso
+#' \describe{
+#' Conversions in dibbler include:
+#' \item{\code{\link{network2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2network}}}{}
+#' \item{\code{\link{network2igraph}}}{}
+#' }
 igraph2data.frame <- function(x){
     ## check class
     if(!inherits(x, what="igraph")) stop("x is not an igraph object")
@@ -81,6 +90,15 @@ igraph2data.frame <- function(x){
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
+#' @seealso
+#' \describe{
+#' Conversions in dibbler include:
+#' \item{\code{\link{network2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2network}}}{}
+#' \item{\code{\link{network2igraph}}}{}
+#' }
 network2igraph <- function(x){
     ## check class
     if(!inherits(x, what="network")) stop("x is not an network object")
@@ -110,6 +128,15 @@ network2igraph <- function(x){
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
+#' @seealso
+#' \describe{
+#' Conversions in dibbler include:
+#' \item{\code{\link{network2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2network}}}{}
+#' \item{\code{\link{network2igraph}}}{}
+#' }
 igraph2network <- function(x){
     ## check class
     if(!inherits(x, what="igraph")) stop("x is not an igraph object")

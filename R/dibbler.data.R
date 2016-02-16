@@ -9,7 +9,6 @@
 #' @param data a list containing inputs for  \code{\link{dibbler}} as returned by \code{dibbler.data}
 #'
 #' @export
-#' @importFrom intergraph asIgraph
 #' @importFrom igraph graph.data.frame V
 #'
 #' @return a list of data suitable for input for \code{\link{dibbler}}
@@ -38,7 +37,7 @@ dibbler.data <- function(graph=NULL, tree=NULL, data=NULL){
 
     ## input: network
     if(inherits(graph, what="network")){
-        graph <- intergraph::asIgraph(graph)
+        graph <- networkd2igraph(graph)
     }
 
     ## HANDLE TREE ##
