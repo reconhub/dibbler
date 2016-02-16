@@ -4,12 +4,12 @@
 \alias{dibbler.data}
 \title{Process input data for dibbler}
 \usage{
-dibbler.data(graph = NULL, tree = NULL, data = NULL)
+dibbler.data(graph = NULL, group = NULL, data = NULL)
 }
 \arguments{
 \item{graph}{a input for buidling a graph (see details)}
 
-\item{tree}{a phylogenetic tree with \code{phylo} class}
+\item{group}{a factor defining genetic clusters}
 
 \item{data}{a list containing inputs for  \code{\link{dibbler}} as returned by \code{dibbler.data}}
 }

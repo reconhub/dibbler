@@ -25,6 +25,9 @@ dibbler <- function(x=dibbler.data(), ...){
     if(!is.list(x)) stop("x is not a list")
     if(!inherits(x, "dibbler.input")) stop("x is not a dibbler.input object")
 
+    ## FIND CLUSTERS ##
+
+
     ## SHAPE/RETURN OUTPUT ##
     out <- list()
 
