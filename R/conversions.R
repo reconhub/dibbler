@@ -1,18 +1,29 @@
 
 
-#' Convert a directed graphs from network to igraph
+#' Convert a directed graphs from network object to data.frame
 #'
-#' The function convert a directed graph with the network format into an igraph object.
+#' The function convert a directed graph with the network format into a data.frame of edge lists (from, to)
 #'
 #' @export
-#' @importFrom igraph graph.data.frame
 #' @importFrom network as.edgelist
 #'
 #' @param x a \code{network} object.
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
-network2igraph <- function(x){
+#' @seealso
+#' \describe{
+#' Conversions in dibbler include:
+#' \item{\code{\link{network2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2network}}}{}
+#' \item{\code{\link{network2igraph}}}{}
+#' }
+network2data.frame <- function(x){
+    ## check class
+    if(!inherits(x, what="network")) stop("x is not an network object")
+
     ## get edge list
     temp <- network::as.edgelist(x)
 
@@ -23,12 +34,65 @@ network2igraph <- function(x){
     out <- matrix(lab[temp], ncol=2)
     colnames(out) <- c("from","to")
 
+    return(as.data.frame(out))
+} # end network2data.frame
+
+
+
+
+
+
+#' Convert a directed graphs from igraph to data.frame
+#'
+#' The function convert a directed graph with the igraph format into into a data.frame of edge lists (from, to).
+#'
+#' @export
+#' @importFrom igraph as_data_frame
+#'
+#' @param x a \code{igraph} object.
+#'
+#' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
+#'
+igraph2data.frame <- function(x){
+    ## check class
+    if(!inherits(x, what="igraph")) stop("x is not an igraph object")
+
+    ## get edge list
+    out <- igraph::as_data_frame(x)
+    colnames(out) <- c("from","to")
+
+    ## return
+    return(out)
+} # end igraph2data.frame
+
+
+
+
+
+
+#' Convert a directed graphs from network to igraph
+#'
+#' The function convert a directed graph with the network format into an igraph object.
+#'
+#' @export
+#' @importFrom igraph graph.data.frame
+#'
+#' @param x a \code{network} object.
+#'
+#' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
+#'
+network2igraph <- function(x){
+    ## check class
+    if(!inherits(x, what="network")) stop("x is not an network object")
+
+    ## get edge list
+    out <- network2data.frame(x)
+
     ## make igraph object
-    out <- igraph::graph.data.frame(as.data.frame(out))
+    out <- igraph::graph.data.frame(out)
 
     return(out)
 } # end network2igraph
-
 
 
 
@@ -40,20 +104,21 @@ network2igraph <- function(x){
 #' The function convert a directed graph with the igraph format into an network object.
 #'
 #' @export
-#' @importFrom network graph.data.frame network
-#' @importFrom igraph as.edgelist as_data_frame
+#' @importFrom network network
 #'
 #' @param x a \code{igraph} object.
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
 igraph2network <- function(x){
-    ## get edge list
-    temp <- igraph::as_data_frame(out)
+    ## check class
+    if(!inherits(x, what="igraph")) stop("x is not an igraph object")
 
+    ## get edge list
+    out <- igraph2data.frame(x)
 
     ## restore labels
-    out <- network::network(temp)
+    out <- network::network(out)
 
     return(out)
 } # end igraph2network
