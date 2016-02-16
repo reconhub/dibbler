@@ -45,7 +45,7 @@ A short demo
 ------------------
 Here is a short demonstration of the package using a dummy dataset.
 
-```{r load}
+```{r data}
 library(igraph)
 library(dibbler)
 
