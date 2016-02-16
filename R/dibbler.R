@@ -38,7 +38,7 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
 
         ## remove NAs
         tree.names <- names(tree)
-        to.keep <- is.na(tree)
+        to.keep <- !is.na(tree)
         tree <- as.integer(tree)[to.keep]
         names(tree) <- tree.names[to.keep]
 
@@ -50,7 +50,7 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
 
         ## get confidence measure
         ## (prop of terminal nodes in tree)
-        conf[i] <- mean(tree %in% x$id.group.matxch)
+        conf[i] <- mean(tree %in% x$id.group.match)
     }
 
     ## SHAPE/RETURN OUTPUT ##
