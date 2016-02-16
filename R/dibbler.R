@@ -10,7 +10,8 @@
 #' @export
 #'
 #' @param x a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.
-#' @param ... further arguments to be passed to other functions
+#' @param graph.opt a list of options are returned by  \code{\link{dibbler.graph.opt}}.
+## #' @param ... further arguments to be passed to other functions
 #'
 #' @seealso
 #' \describe{
@@ -19,7 +20,7 @@
 #'
 #' @examples
 #'
-dibbler <- function(x=dibbler.data(), ...){
+dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
     ## CHECKS ##
     if(is.null(x)) stop("x is NULL")
     if(!is.list(x)) stop("x is not a list")
@@ -27,6 +28,7 @@ dibbler <- function(x=dibbler.data(), ...){
 
     ## PERFORM  ##
     freq <- list()
+    conf <- numeric()
 
     ## for all internal nodes...
     for(i in seq_along(x$lab.graph)){
@@ -34,23 +36,26 @@ dibbler <- function(x=dibbler.data(), ...){
         tree <- dfs(graph=x$graph, root=i,
                     neimode="out", unreachable=FALSE)$order
 
+        ## remove NAs
+        tree.names <- names(tree)
+        to.keep <- is.na(tree)
+        tree <- as.integer(tree)[to.keep]
+        names(tree) <- tree.names[to.keep]
+
         ## isolate tips
         tips <- intersect(names(tree),x$lab.match)
 
         ## get group frequencies
-        out[[i]] <- table(x$group[tips])/length(tips)
+        freq[[i]] <- table(x$group[tips])/length(tips)
 
         ## get confidence measure
         ## (prop of terminal nodes in tree)
-        conf <- mean(tree %in% x$id.terminal)
+        conf[i] <- mean(tree %in% x$id.group.matxch)
     }
 
     ## SHAPE/RETURN OUTPUT ##
-    out <- list()
     names(freq) <- names(conf) <- x$lab.graph
-    out$freq <- freq
-    out$conf <- conf
-    out$graph <- x$graph
+    out <- list(freq=freq, conf=conf, graph=x$graph)
 
     return(out)
 } # end dibbler
