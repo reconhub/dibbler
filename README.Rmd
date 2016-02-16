@@ -3,9 +3,8 @@
 [![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
 
 
-knitr::opts_chunk$set(warning=FALSE)
-
 ```{r compileVignette, results="hide",echo=FALSE,message=FALSE,fig.keep="none"}
+knitr::opts_chunk$set(warning=FALSE)
 ## recompile vignette
 setwd("vignettes")
 knit("dibbler.Rmd")

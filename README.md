@@ -3,8 +3,6 @@
 [![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
 
 
-knitr::opts_chunk$set(warning=FALSE)
-
 
 ```
 ## Warning in rep(margin, length = 4): partial argument match of 'length' to
