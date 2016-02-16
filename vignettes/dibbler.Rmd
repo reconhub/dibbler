@@ -45,11 +45,11 @@ A short demo
 ------------------
 Here is a short demonstration of the package using a dummy dataset.
 
+We first generate a labelled network using *igraph*:
+
 ```{r data}
 library(igraph)
-library(dibbler)
 
-## GENERATE DATA
 set.seed(1)
 g1 <- make_tree(20, 3)
 
@@ -58,20 +58,21 @@ temp <- data.frame(lapply(
 igraph2data.frame(g1), as.character),
 stringsAsFactors=FALSE)
 g1 <- graph.data.frame(temp)
+```
 
-## find times
+Then we identify the 'tips' and generate draw cluster types from 4 clusters:
+```{r data2}
 tips <- which(degree(g1, mode="out")==0)
 grp <- factor(sample(letters[1:4], replace=TRUE, size=length(tips)))
 names(grp) <- tips
-
-
-## RUN DIBBLER
-out <- dibbler(dibbler.data(g1, grp))
 ```
 
-Checking and plotting the output:
+To run *dibbler*:
 ```{r dibbler}
+out <- dibbler(dibbler.data(g1, grp), graph.opt=dibbler.graph.opt(max.size=15))
+out
 plot(out$graph, vertex.label="")
 ```
+
 
 
