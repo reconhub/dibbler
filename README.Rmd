@@ -1,0 +1,26 @@
+[![Travis-CI Build Status](https://travis-ci.org/thibautjombart/dibbler.png?branch=master)](https://travis-ci.org/thibautjombart/dibbler)
+
+[![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
+
+
+
+```{r compileVignette, results="hide",echo=FALSE,message=FALSE,fig.keep="none"}
+## recompile vignette
+setwd("vignettes")
+knit("dibbler.Rmd")
+setwd("../")
+```
+
+```{r include, results="asis", echo=FALSE, warning=FALSE}
+## read md of the vignette
+mdInput <- readLines("vignettes/dibbler.md")
+
+## remove vignette-specific headers
+toRemove <- 1:10
+mdInput <- mdInput[-toRemove]
+
+## restore right path for figures
+mdInput <- gsub("figs/","vignettes/figs/",mdInput)
+cat(paste(mdInput,collapse="\n"))
+```
+

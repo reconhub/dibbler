@@ -1,0 +1,46 @@
+---
+title: "Investigation of food-borne disease outbreaks"
+author: "Thibaut Jombart"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{rmarkdown::render}
+  %\VignetteIndexEntry{Investigation of food-borne disease outbreaks.}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r setup, echo=FALSE}
+# set global chunk options: images will be 7x7 inches
+knitr::opts_chunk$set(fig.width=7, fig.height=7, fig.path="figs/")
+options(digits = 4)
+```
+*dibbler*: Investigation of food-borne disease outbreaks.
+
+=================================================
+*dibbler* provides tools for investigating food-borne outbreaks with (at least partly) known food distribution networks, and genetic information on the cases.
+This document provides an overview of the package's content.
+
+
+Installing *dibbler*
+-------------
+To install the development version from github:
+```{r install, eval=FALSE}
+library(devtools)
+install_github("thibautjombart/dibbler")
+```
+
+The stable version can be installed from CRAN using:
+```{r install2, eval=FALSE}
+install.packages("dibbler")
+```
+
+Then, to load the package, use:
+```{r load}
+library("dibbler")
+```
+
+
+A short demo
+------------------
+Here is a short demonstration of the package using a dummy dataset.
