@@ -18,18 +18,57 @@
 dibbler.data <- function(graph=NULL, tree=NULL, ...){
     ## PROCESS INPUT ##
     ## extract data from list ##
-    data <- list(...)
-    if(length(data)==0L) stop("no data to process")
+    dots <- list(...)
+    use.dots <- (length(dots)>0L)
 
+    ## IF DATA FROM ... ##
+    if(use.dots){
     ## escape if data has been processed already
-    if(inherits(data[[1]],"dibbler.input")) return(data[[1]])
+        if(inherits(dots[[1]],"dibbler.input")) return(dots[[1]])
+    } else if(is.null(graph) || is.null(tree)){
+        stop("graph or tree missing")
+    }
 
-    ## if first item is a list, use it as input
-    if(is.list(data[[1]])) data <- data[[1]]
+
+    ## HANDLE GRAPH ##
+    ## input: data.frame / matrix
+    ## (assumed ancestors -> descendent)
+    if(is.data.frame(graph) || is.matrix(graph)){
+        if(ncol(graph)<2) stop("edge matrix provided as graph has less than 2 columns")
+        if(ncol(graph)>2) warning("edge matrix provided as graph has more than 2 columns; only using the first two")
+        graph <- igraph::graph.data.frame(graph)
+    }
+
+    ## input: network
+    if(inherits(graph, what="network")){
+        graph <- intergraph::asIgraph(graph)
+    }
+
+    ## HANDLE TREE ##
+    if(!inherits(tree, what="phylo")){
+        stop("tree is not a phylo object")
+    }
+
+
+    ## MATCH TIPS AND NETWORK ##
+    lab.graph <- labels(igraph::V(graph))
+    lab.tree <- tree$tip.label
+    lab.match <- intersect(lab.graph, lab.tree)
+    if(length(lab.match)==0L) {
+        stop("no match between vertices and tips")
+    }
+    id.graph.match <- match(lab.graph, lab.match)
+    id.tree.match <- match(lab.tree, lab.match)
+
 
 
     ## RETURN OUTPUT ##
-    out <- list()
+    out <- list(graph=graph,
+                tree=tree,
+                lab.match=lab.match,
+                id.graph.match=id.graph.match,
+                id.tree.match=id.tree.match
+                )
     class(out) <- c("list", "dibbler.input")
     return(out)
 } # end dibbler.data
