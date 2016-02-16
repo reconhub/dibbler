@@ -26,10 +26,10 @@ dibbler <- function(x=dibbler.data(), ...){
     if(!inherits(x, "dibbler.input")) stop("x is not a dibbler.input object")
 
     ## PERFORM  ##
-    out <- list()
+    freq <- list()
 
     ## for all internal nodes...
-    for(i in x$id.internal){
+    for(i in seq_along(x$lab.graph)){
         ## get tree from the node
         tree <- dfs(graph=x$graph, root=i,
                     neimode="out", unreachable=FALSE)$order
@@ -39,9 +39,18 @@ dibbler <- function(x=dibbler.data(), ...){
 
         ## get group frequencies
         out[[i]] <- table(x$group[tips])/length(tips)
+
+        ## get confidence measure
+        ## (prop of terminal nodes in tree)
+        conf <- mean(tree %in% x$id.terminal)
     }
 
     ## SHAPE/RETURN OUTPUT ##
-    names(out) <- x$lab.internal
+    out <- list()
+    names(freq) <- names(conf) <- x$lab.graph
+    out$freq <- freq
+    out$conf <- conf
+    out$graph <- x$graph
+
     return(out)
 } # end dibbler
