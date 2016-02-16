@@ -18,7 +18,7 @@
 #'
 #' @export
 #' @importFrom utils modifyList
-#' @importFrom igraph "E" "E<-"
+#' @importFrom igraph "E" "E<-" "V" "V<-" "layout_nicely"
 #'
 #' @examples
 #' dibbler.graph.opt()
@@ -29,10 +29,11 @@ dibbler.graph.opt <- function(...){
 
     ## SET DEFAULTS ##
     defaults <- list(col.pal=dibbler.pal2,
-                     layout=layout_nicely,
+                     col=NULL,
+                     layout=igraph::layout_nicely,
                      seed=1,
-                     vertex.min.size=3,
-                     vertex.max.size=10,
+                     min.size=3,
+                     max.size=10,
                      label.family="sans",
                      label.color="black",
                      edge.label=FALSE)
@@ -64,13 +65,17 @@ set.graph.opt <- function(g, opt, freq, conf){
     V(g)$pie <- freq
 
     ## pie color
-    K <- length(freq[[1]]) # number of genetic clusters
-    V(g)$pie.color <- list(opt$col.pal(K))
+    if(is.null(opt$col)){
+        K <- length(freq[[1]]) # number of genetic clusters
+        V(g)$pie.color <- list(opt$col.pal(K))
+    } else {
+        V(g)$pie.color <- list(opt$col)
+    }
 
     ## size
     vsize <- conf-min(conf) # set min to zero
-    vsize <- (vsize/max(vsize)) * (opt$vertex.max.size - opt$vertex.min.size) # set offset from min
-    vsize <- vsize + opt$vertex.min.size # set min
+    vsize <- (vsize/max(vsize)) * (opt$max.size - opt$min.size) # set offset from min
+    vsize <- vsize + opt$min.size # set min
     V(g)$size <- vsize
 
     ## font

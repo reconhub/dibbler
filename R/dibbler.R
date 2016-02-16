@@ -8,6 +8,7 @@
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
 #' @export
+#' @importFrom igraph dfs
 #'
 #' @param x a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.
 #' @param graph.opt a list of options are returned by  \code{\link{dibbler.graph.opt}}.
@@ -33,7 +34,7 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
     ## for all internal nodes...
     for(i in seq_along(x$lab.graph)){
         ## get tree from the node
-        tree <- dfs(graph=x$graph, root=i,
+        tree <- igraph::dfs(graph=x$graph, root=i,
                     neimode="out", unreachable=FALSE)$order
 
         ## remove NAs, keep only labels

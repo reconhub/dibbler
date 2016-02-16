@@ -4,12 +4,12 @@
 \alias{dibbler}
 \title{Modelling food-borne outbreaks using genetic data}
 \usage{
-dibbler(x = dibbler.data(), ...)
+dibbler(x = dibbler.data(), graph.opt = dibbler.graph.opt())
 }
 \arguments{
 \item{x}{a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.}
 
-\item{...}{further arguments to be passed to other functions}
+\item{graph.opt}{a list of options are returned by  \code{\link{dibbler.graph.opt}}.}
 }
 \description{
 The function \code{dibbler} is used for inferring the transmission of food-borne diseases across a food distribution network using pathogen genome sequences sampled for a set of cases.
