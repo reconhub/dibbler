@@ -1,9 +1,13 @@
-[![Travis-CI Build Status](https://travis-ci.org/thibautjombart/dibbler.png?branch=master)](https://travis-ci.org/thibautjombart/dibbler)
-
-[![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
-
-
-
+---
+title: "Investigation of food-borne disease outbreaks"
+author: "Thibaut Jombart"
+date: "2016-02-16"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{rmarkdown::render}
+  %\VignetteIndexEntry{Investigation of food-borne disease outbreaks.}
+  \usepackage[utf8]{inputenc}
+---
 
 
 
@@ -39,4 +43,3 @@ library("dibbler")
 A short demo
 ------------------
 Here is a short demonstration of the package using a dummy dataset.
-
