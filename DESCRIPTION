@@ -1,0 +1,14 @@
+Package: vimes
+Version: 0.0-1
+Date: 2029-09-11
+Title: Investigation of food-borne disease outbreaks
+Authors@R: 
+	   c(TJ=person("Thibaut", "Jombart", , "thibautjombart@gmail.com", role = c("aut", "cre")))
+Depends:	R (>= 3.0.0)
+Imports: utils, graphics, igraph
+Suggests:  testthat, knitr, rmarkdown
+Description: Tools for investigating of food-borne disease outbreaks using pathogen genome sequences.
+License: GPL (>=2)
+LazyData: true
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
