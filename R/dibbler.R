@@ -36,21 +36,18 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
         tree <- dfs(graph=x$graph, root=i,
                     neimode="out", unreachable=FALSE)$order
 
-        ## remove NAs
-        tree.names <- names(tree)
-        to.keep <- !is.na(tree)
-        tree <- as.integer(tree)[to.keep]
-        names(tree) <- tree.names[to.keep]
+        ## remove NAs, keep only labels
+        tree <- names(tree)[!is.na(tree)]
 
-        ## isolate tips
-        tips <- intersect(names(tree),x$lab.match)
+        ## identify tips
+        tips <- intersect(tree, x$lab.match)
 
         ## get group frequencies
         freq[[i]] <- table(x$group[tips])/length(tips)
 
         ## get confidence measure
         ## (prop of terminal nodes in tree)
-        conf[i] <- mean(tree %in% x$id.group.match)
+        conf[i] <- length(tips)/length(tree)
     }
 
     ## SHAPE/RETURN OUTPUT ##
