@@ -25,11 +25,23 @@ dibbler <- function(x=dibbler.data(), ...){
     if(!is.list(x)) stop("x is not a list")
     if(!inherits(x, "dibbler.input")) stop("x is not a dibbler.input object")
 
-    ## FIND CLUSTERS ##
-
-
-    ## SHAPE/RETURN OUTPUT ##
+    ## PERFORM  ##
     out <- list()
 
+    ## for all internal nodes...
+    for(i in x$id.internal){
+        ## get tree from the node
+        tree <- dfs(graph=x$graph, root=i,
+                    neimode="out", unreachable=FALSE)$order
+
+        ## isolate tips
+        tips <- intersect(names(tree),x$lab.match)
+
+        ## get group frequencies
+        out[[i]] <- table(x$group[tips])/length(tips)
+    }
+
+    ## SHAPE/RETURN OUTPUT ##
+    names(out) <- x$lab.internal
     return(out)
 } # end dibbler
