@@ -6,27 +6,24 @@
 #'
 #' @param graph a input for buidling a graph (see details)
 #' @param tree a phylogenetic tree with \code{phylo} class
-#' @param ... a list containing inputs for  \code{\link{dibbler}}
+#' @param data a list containing inputs for  \code{\link{dibbler}} as returned by \code{dibbler.data}
 #'
 #' @export
-#' @importFrom stats as.dist
+#' @importFrom intergraph asIgraph
+#' @importFrom igraph graph.data.frame V
 #'
 #' @return a list of data suitable for input for \code{\link{dibbler}}
 #'
 #' @examples
 #'
-dibbler.data <- function(graph=NULL, tree=NULL, ...){
+dibbler.data <- function(graph=NULL, tree=NULL, data=NULL){
     ## PROCESS INPUT ##
-    ## extract data from list ##
-    dots <- list(...)
-    use.dots <- (length(dots)>0L)
-
-    ## IF DATA FROM ... ##
-    if(use.dots){
+     ## HANDLE 'DATA' ##
+    if(!is.null(data)){
     ## escape if data has been processed already
-        if(inherits(dots[[1]],"dibbler.input")) return(dots[[1]])
+        if(inherits(data,"dibbler.input")) return(data)
     } else if(is.null(graph) || is.null(tree)){
-        stop("graph or tree missing")
+        stop("graph or tree missing, and 'data' not provided")
     }
 
 

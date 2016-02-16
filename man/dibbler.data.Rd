@@ -4,14 +4,14 @@
 \alias{dibbler.data}
 \title{Process input data for dibbler}
 \usage{
-dibbler.data(graph = NULL, tree = NULL, ...)
+dibbler.data(graph = NULL, tree = NULL, data = NULL)
 }
 \arguments{
 \item{graph}{a input for buidling a graph (see details)}
 
 \item{tree}{a phylogenetic tree with \code{phylo} class}
 
-\item{...}{a list containing inputs for  \code{\link{dibbler}}}
+\item{data}{a list containing inputs for  \code{\link{dibbler}} as returned by \code{dibbler.data}}
 }
 \value{
 a list of data suitable for input for \code{\link{dibbler}}

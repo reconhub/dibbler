@@ -2,14 +2,19 @@
 % Please edit documentation in R/dibbler.R
 \name{dibbler}
 \alias{dibbler}
-\title{The function \code{dibbler} is used for inferring the transmission of food-borne diseases across a food distribution network using pathogen genome sequences sampled for a set of cases.}
+\title{Modelling food-borne outbreaks using genetic data}
 \usage{
-dibbler(x, ...)
+dibbler(x = dibbler.data(), ...)
 }
 \arguments{
-\item{x}{a list of the class 'dibbler.input' as returned by \code{dibbler.data}.}
+\item{x}{a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.}
+
+\item{...}{further arguments to be passed to other functions}
 }
 \description{
+The function \code{dibbler} is used for inferring the transmission of food-borne diseases across a food distribution network using pathogen genome sequences sampled for a set of cases.
+}
+\details{
 !!! This package is still under development. Do not use it without contacting the author. !!!
 }
 \examples{
