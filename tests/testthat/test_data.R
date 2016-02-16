@@ -8,7 +8,7 @@ test_that("test: data are processed fine", {
     rm(list=ls())
 
     ## generate data
-    out <- dibbler.data()
+    expect_error(dibbler.data())
 
     ## check output shape
 
