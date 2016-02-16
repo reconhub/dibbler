@@ -4,60 +4,6 @@
 
 
 
-```
-## Warning in rep(margin, length = 4): partial argument match of 'length' to
-## 'length.out'
-```
-
-```
-## Warning in plot.default(0, 0, type = "n", xlab = xlab, ylab = ylab, xlim =
-## xlim, : partial argument match of 'frame' to 'frame.plot'
-```
-
-```
-## Warning in rep(mark.shape, length = length(mark.groups)): partial argument
-## match of 'length' to 'length.out'
-```
-
-```
-## Warning in rep(mark.border, length = length(mark.groups)): partial argument
-## match of 'length' to 'length.out'
-```
-
-```
-## Warning in rep(mark.col, length = length(mark.groups)): partial argument
-## match of 'length' to 'length.out'
-```
-
-```
-## Warning in rep(mark.expand, length = length(mark.groups)): partial argument
-## match of 'length' to 'length.out'
-```
-
-```
-## Warning in seq.default(0, cin^2, length = floor(35 * cin) + 2): partial
-## argument match of 'length' to 'length.out'
-```
-
-```
-## Warning in rep(sh.col, length = length(c.x1)): partial argument match of
-## 'length' to 'length.out'
-```
-
-```
-## Warning in rep(sh.lty, length = length(c.x1)): partial argument match of
-## 'length' to 'length.out'
-```
-
-```
-## Warning in rep(sh.lwd, length = length(c.x1)): partial argument match of
-## 'length' to 'length.out'
-```
-
-```
-## Warning in rep(1/200 * getparam("size"), length = nrow(coords)): partial
-## argument match of 'length' to 'length.out'
-```
 
 
 *dibbler*: Investigation of food-borne disease outbreaks.
@@ -97,7 +43,26 @@ We first generate a labelled network using *igraph*:
 
 ```r
 library(igraph)
+```
 
+```
+## 
+## Attaching package: 'igraph'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     decompose, spectrum
+```
+
+```
+## The following object is masked from 'package:base':
+## 
+##     union
+```
+
+```r
 set.seed(1)
 g1 <- make_tree(20, 3)
 
