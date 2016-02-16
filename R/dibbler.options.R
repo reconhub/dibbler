@@ -31,7 +31,8 @@ dibbler.graph.opt <- function(...){
     defaults <- list(col.pal=dibbler.pal2,
                      layout=layout_nicely,
                      seed=1,
-                     vertex.size=10,
+                     vertex.min.size=3,
+                     vertex.max.size=10,
                      label.family="sans",
                      label.color="black",
                      edge.label=FALSE)
@@ -47,42 +48,36 @@ dibbler.graph.opt <- function(...){
 
 
 ## non-export function to set graph options ##
-set.graph.opt <- function(g, opt){
+set.graph.opt <- function(g, opt, freq, conf){
     ## check class
     if(!inherits(g, "igraph")) stop("g is not a igraph object")
-
-    ## find clusters ##
-    groups <- clusters(g)
 
     ## layout ##
     set.seed(opt$seed)
     g$layout <- opt$layout(g)
 
     ## vertices ##
-    ## color
-    groups$color <- opt$col.pal(groups$no)
-    V(g)$color <- groups$color[groups$membership]
+    ## shape
+    V(g)$shape <- "pie"
+
+    ## pie values
+    V(g)$pie <- freq
+
+    ## pie color
+    K <- length(freq[[1]]) # number of genetic clusters
+    V(g)$pie.color <- list(opt$col.pal(K))
 
     ## size
-    V(g)$size <- opt$vertex.size
+    vsize <- conf-min(conf) # set min to zero
+    vsize <- (vsize/max(vsize)) * (opt$vertex.max.size - opt$vertex.min.size) # set offset from min
+    vsize <- vsize + opt$vertex.min.size # set min
+    V(g)$size <- vsize
 
     ## font
     V(g)$label.family <- opt$label.family
 
     ## font color
     V(g)$label.color <- opt$label.color
-
-    ##  edges ##
-    ## labels
-    if(length(E(g))>0 && opt$edge.label) {
-        E(g)$label <- E(g)$weight
-    }
-
-    ## color
-    E(g)$label.color <-  opt$label.color
-
-    ## font
-    ##    E(g)$label.family <- "sans" # bugs for some reason
 
     ## RETURN GRAPH ##
     return(g)

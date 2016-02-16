@@ -50,9 +50,13 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
         conf[i] <- length(tips)/length(tree)
     }
 
+
+    ## SET OUTPUT GRAPH ATTRIBUTES ##
+    graph <- set.graph.opt(x$graph, graph.opt, freq=freq, conf=conf)
+
     ## SHAPE/RETURN OUTPUT ##
     names(freq) <- names(conf) <- x$lab.graph
-    out <- list(freq=freq, conf=conf, graph=x$graph)
+    out <- list(freq=freq, conf=conf, graph=graph)
 
     return(out)
 } # end dibbler
