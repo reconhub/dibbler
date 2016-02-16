@@ -54,8 +54,8 @@ dibbler.data <- function(graph=NULL, tree=NULL, data=NULL){
     if(length(lab.match)==0L) {
         stop("no match between vertices and tips")
     }
-    id.graph.match <- match(lab.graph, lab.match)
-    id.tree.match <- match(lab.tree, lab.match)
+    id.graph.match <- which(lab.graph %in% lab.match)
+    id.tree.match <- which(lab.tree %in% lab.match)
 
 
 
