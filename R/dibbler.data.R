@@ -64,28 +64,32 @@ dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
     ## EXTRACT NETWORK FEATURES ##
     ## index of terminal nodes
     id.terminal <- which(!lab.graph %in% igraph2data.frame(graph)$from)
-    ## index of basal nodes
-    id.basal <- which(!lab.graph %in% igraph2data.frame(graph)$to)
     ## index of internal nodes
     id.internal <- which(lab.graph %in% igraph2data.frame(graph)$from)
+    ## index of basal nodes
+    id.basal <- which(!lab.graph %in% igraph2data.frame(graph)$to)
 
     ## label of terminal nodes
     lab.terminal <- lab.graph[id.terminal]
-    ## label of basal nodes
-    lab.basal <- lab.graph[id.basal]
     ## label of internal nodes
     lab.internal <- lab.graph[id.internal]
+    ## label of basal nodes
+    lab.basal <- lab.graph[id.basal]
 
 
     ## RETURN OUTPUT ##
     out <- list(graph=graph,
                 group=group,
+                lab.graph=lab.graph,
+                lab.group=lab.group,
                 lab.match=lab.match,
                 id.graph.match=id.graph.match,
                 id.group.match=id.group.match,
                 id.terminal=id.terminal,
+                id.internal=id.internal,
                 id.basal=id.basal,
                 lab.terminal=lab.terminal,
+                lab.internal=lab.internal,
                 lab.basal=lab.basal
                 )
     class(out) <- c("list", "dibbler.input")
