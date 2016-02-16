@@ -66,10 +66,15 @@ dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
     id.terminal <- which(!lab.graph %in% igraph2data.frame(graph)$from)
     ## index of basal nodes
     id.basal <- which(!lab.graph %in% igraph2data.frame(graph)$to)
+    ## index of internal nodes
+    id.internal <- which(lab.graph %in% igraph2data.frame(graph)$from)
+
     ## label of terminal nodes
     lab.terminal <- lab.graph[id.terminal]
     ## label of basal nodes
     lab.basal <- lab.graph[id.basal]
+    ## label of internal nodes
+    lab.internal <- lab.graph[id.internal]
 
 
     ## RETURN OUTPUT ##
