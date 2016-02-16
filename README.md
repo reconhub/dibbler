@@ -43,26 +43,7 @@ We first generate a labelled network using *igraph*:
 
 ```r
 library(igraph)
-```
 
-```
-## 
-## Attaching package: 'igraph'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     decompose, spectrum
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     union
-```
-
-```r
 set.seed(1)
 g1 <- make_tree(20, 3)
 
