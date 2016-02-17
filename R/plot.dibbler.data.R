@@ -20,6 +20,17 @@
 #'
 #' @examples
 #'
+#' if(require(igraph) && require(network)){
+#'
+#' ## generate graph from edge list
+#' Salmonella
+#' g <- graph.data.frame(Salmonella$graph)
+#'
+#' input <- dibbler.data(graph=g, group=Salmonella$cluster)
+#' plot(input)
+#' plot(input, cex=2, color.internal=FALSE)
+#' }
+#'
 plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
                                col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, ...){
     ## convert input graph to network
