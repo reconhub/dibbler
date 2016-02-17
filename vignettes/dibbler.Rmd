@@ -15,15 +15,16 @@ vignette: >
 knitr::opts_chunk$set(fig.width=7, fig.height=7, fig.path="figs/", warning=FALSE)
 options(digits = 4)
 ```
-*dibbler*: Investigation of food-borne disease outbreaks.
 
+
+*dibbler*: Investigation of food-borne disease outbreaks.
+=================================================
 
 > *And then you bit onto them, and learned once again that Cut-me-own-Throat Dibbler could find a
 >   use for bits of an animal that the animal didn't know it had got. Dibbler had worked out that
 >   with enough fried onions and mustard people would eat anything.*
 [Terry Pratchett, Moving Pictures.]
 
-=================================================
 *dibbler* provides tools for investigating food-borne outbreaks with (at least partly) known food distribution networks, and genetic information on the cases.
 This document provides an overview of the package's content.
 
