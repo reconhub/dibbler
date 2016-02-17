@@ -206,6 +206,10 @@ plot(dat)
 ```
 
 <img src="vignettes/figs/input-1.png" title="plot of chunk input" alt="plot of chunk input" width="800px" height="800px" />
+The figure above shows terminal nodes as triangles, basal nodes as hexagons, and other nodes as circles.
+The size of internal nodes is proportional to the number of immediately descending nodes (out-degree).
+Annotation of the terminal nodes indicate genetic clusters.
+
 
 We can now run `dibbler` on the data, and examine the output:
 
