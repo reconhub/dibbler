@@ -211,6 +211,7 @@ plot(dat)
 ```
 
 <img src="vignettes/figs/input-1.png" title="plot of chunk input" alt="plot of chunk input" width="800px" height="800px" />
+
 The figure above shows terminal nodes as triangles, basal nodes as hexagons, and other nodes as circles.
 The size of internal nodes is proportional to the number of immediately descending nodes (out-degree).
 Annotation of the terminal nodes indicate genetic clusters.
@@ -219,19 +220,12 @@ Annotation of the terminal nodes indicate genetic clusters.
 We can now run `dibbler` on the data, and examine the output:
 
 ```r
-out <- dibbler()
-```
-
-```
-## Error in dibbler.data(): graph or group missing, and 'data' not provided
-```
-
-```r
+out <- dibbler(dat)
 names(out)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'out' not found
+## [1] "freq"  "conf"  "graph"
 ```
 
 ```r
@@ -239,7 +233,35 @@ head(out$freq)
 ```
 
 ```
-## Error in head(out$freq): object 'out' not found
+## $`2e7967`
+## 
+##      A      B      C 
+## 0.5833 0.2083 0.2083 
+## 
+## $cd48bf
+## 
+##      A      B      C 
+## 0.6667 0.1111 0.2222 
+## 
+## $dd73b6
+## 
+## A B C 
+## 0 1 0 
+## 
+## $`7ba446`
+## 
+## A B C 
+## 0 0 1 
+## 
+## $`642cb4`
+## 
+## A B C 
+## 1 0 0 
+## 
+## $c7cd02
+## 
+## A B C 
+## 1 0 0
 ```
 
 ```r
@@ -247,7 +269,8 @@ head(out$conf)
 ```
 
 ```
-## Error in head(out$conf): object 'out' not found
+## 2e7967 cd48bf dd73b6 7ba446 642cb4 c7cd02 
+## 0.4706 0.5000 0.6667 0.3333 0.3333 0.5000
 ```
 
 ```r
@@ -255,16 +278,25 @@ out$graph
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'out' not found
+## IGRAPH DN-- 98 103 -- 
+## + attr: layout (g/n), name (v/c), shape (v/c), pie (v/x),
+## | pie.color (v/x), size (v/n), label.family (v/c), label.color
+## | (v/c)
+## + edges (vertex names):
+##  [1] 2e7967->dd73b6 2e7967->c7cd02 2e7967->2afba4 2e7967->4df851
+##  [5] 2e7967->48f980 2e7967->2d3187 cd48bf->e42c72 cd48bf->7d21f1
+##  [9] dd73b6->874918 7ba446->f83f2e 642cb4->327734 c7cd02->337cac
+## [13] 5b44d7->f7fc94 5b44d7->2fabc7 2afba4->5b44d7 2afba4->c1dc98
+## [17] 2afba4->b16cf0 2afba4->206e37 2afba4->958de8 fc7f8f->dd73b6
+## [21] 963c41->acf7bb 963c41->9f5aad f60e85->4941c6 4941c6->0b57e4
+## + ... omitted several edges
 ```
 
 ```r
 plot(out$graph, vertex.label="")
 ```
 
-```
-## Error in plot(out$graph, vertex.label = ""): object 'out' not found
-```
+<img src="vignettes/figs/dibbler-1.png" title="plot of chunk dibbler" alt="plot of chunk dibbler" width="800px" height="800px" />
 
 The output items are:
 - `$freq`: a list containing vectors of estimated cluster frequencies for each internal node of the graph
