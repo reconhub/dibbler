@@ -4,21 +4,19 @@
 \name{Salmonella}
 \alias{Salmonella}
 \alias{fakeOutbreak}
-\title{This dataset is a small simulated outbreak used to illustrate outbreaker.
-It was generated using \code{simOutbreak}.}
+\title{Salmonella Enteritidis P59 outbreak}
 \format{An object of class \code{list} of length 2.}
 \source{
-Gastrointestinal Bacteria Reference Unit, Public Health England
+Multi-agency Salmonella Enteritidis PT59 Outbreak Control Team, chaired by Public Health England
 }
 \usage{
 Salmonella
 }
 \description{
-This dataset is a small simulated outbreak used to illustrate outbreaker.
-It was generated using \code{simOutbreak}.
+This dataset covers a food-borne outbreak of Salmonella Enteritidis PT59 investigated by Public Health England. The data includes a distribution network, and genetic clusters of bacteria isolated in contaminated patients. The data is anonymised: identifiers of the food distribution network have been hashed.
 }
 \author{
-Thomas Inns, Philip Ashton, Tim Dallman, Roberto Vivancos
+Thomas Inns \email{Thomas.Inns@phe.gov.uk}, Philip Ashton, Tim Dallman, Roberto Vivancos
 }
 \keyword{datasets}
 
