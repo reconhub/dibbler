@@ -21,6 +21,16 @@ This function ...
 }
 \examples{
 
+if(require(igraph)){
+
+## generate graph from edge list
+Salmonella
+g <- graph.data.frame(Salmonella$graph)
+
+dibbler.data(graph=g, group=Salmonella$cluster)
+
+}
+
 }
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}

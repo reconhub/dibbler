@@ -6,6 +6,9 @@
 #'
 #' @param x an input dataset as returned by \code{dibbler.data}
 #' @param y unused argument, for compatibility with the \code{plot} generic
+#' @param cex a size factor for the nodes of the network
+#' @param lab.cex a size factor for the tip annotations (genetic clusters)
+#' @param color.internal a logical indicating whether internal nodes and their descending edges should be colored
 #' @param col.pal1 a color palette to be used for the genetic clusters (tips)
 #' @param col.pal2 a color palette to be used for identifying internal nodes
 #' @param ... further arguments to be passed to \code{plot.network}
@@ -17,7 +20,8 @@
 #'
 #' @examples
 #'
-plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, cex=1, ...){
+plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
+                               col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, ...){
     ## convert input graph to network
     net <- igraph2network(x$graph)
     net.df <- network2data.frame(net)
@@ -41,7 +45,9 @@ plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler
     ## internal node colors
     v.col <- rep("grey",.5, N)
     names(v.col) <- network.vertex.names(net)
-    v.col[id.internal] <- col.pal2(N.internal)
+    if(color.internal){
+        v.col[id.internal] <- col.pal2(N.internal)
+    }
 
     ## group colors
     grp.col <- col.pal1(K)
@@ -56,7 +62,7 @@ plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler
     v.lwd <- rep(1,N)
     v.lwd[id.basal] <- 3
 
-    ## set sizes
+    ## vertex sizes
     v.size <- sapply(v.names, function(e) sum(e == net.df$from))
     v.size <- 1 + sqrt(v.size) * (cex/2)
     v.size[id.terminal] <- 1
@@ -66,14 +72,14 @@ plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler
     e.col <- v.col[attr(e.list, "vnames")[e.df[,1]]]
 
     ## make plot
-    out <- plot(net, label=v.lab, label.cex=cex,
+    out <- plot(net, label=v.lab, label.cex=lab.cex,
          edge.col=e.col, vertex.col=v.col,
          label.col=v.col, vertex.cex=v.size,
          vertex.sides=v.sides,
          vertex.lwd=v.lwd, ...)
 
     return(invisible(out))
-} # end plot.dibbler.data
+} # end plot.dibbler.input
 
 
 
