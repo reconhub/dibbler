@@ -111,10 +111,113 @@ g
 ## + ... omitted several edges
 ```
 
+Data from the network and the genetic cluster can be merged and checked using `dibbler.data`.
+The resulting object is a list with class `dibbler.input` with a dedicated plot method:
+
+```r
+dat <- dibbler.data(graph=g, group=Salmonella$cluster)
+names(dat)
+```
+
+```
+##  [1] "graph"          "group"          "lab.graph"      "lab.group"     
+##  [5] "lab.match"      "id.graph.match" "id.group.match" "id.terminal"   
+##  [9] "id.internal"    "id.basal"       "lab.terminal"   "lab.internal"  
+## [13] "lab.basal"
+```
+
+```r
+lapply(dat, head)
+```
+
+```
+## $graph
+## 6 x 98 sparse Matrix of class "dgCMatrix"
+```
+
+```
+##    [[ suppressing 98 column names '2e7967', 'cd48bf', 'dd73b6' ... ]]
+```
+
+```
+##                                                                           
+## 2e7967 . . 1 . . 1 . 1 . . . . . . . . . . . . . . . . . . . . . . . . . 1
+## cd48bf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 .
+## dd73b6 . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . .
+## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . .
+## 642cb4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## c7cd02 . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . .
+##                                                                           
+## 2e7967 . . . . . . . . . . . . . . 1 . . . . . 1 . . . . . . . . . . . . .
+## cd48bf . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . .
+## dd73b6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## 642cb4 . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . .
+## c7cd02 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+##                                                                   
+## 2e7967 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## cd48bf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## dd73b6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## 642cb4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## c7cd02 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+## 
+## $group
+## d81c17 064974 3b712b 486c07 6f5824 c77a84 
+##      A      A      A      A      A      A 
+## Levels: A B C
+## 
+## $lab.graph
+## [1] "2e7967" "cd48bf" "dd73b6" "7ba446" "642cb4" "c7cd02"
+## 
+## $lab.group
+## [1] "d81c17" "064974" "3b712b" "486c07" "6f5824" "c77a84"
+## 
+## $lab.match
+## [1] "0b6e5a" "acf7bb" "9f5aad" "0b57e4" "78e5ba" "ca432a"
+## 
+## $id.graph.match
+## [1] 20 57 58 59 60 61
+## 
+## $id.group.match
+## [1] 1 2 3 4 5 6
+## 
+## $id.terminal
+## [1] 57 58 59 60 61 62
+## 
+## $id.internal
+## [1] 1 2 3 4 5 6
+## 
+## $id.basal
+## [1]  1  9 13 17 21 26
+## 
+## $lab.terminal
+## [1] "acf7bb" "9f5aad" "0b57e4" "78e5ba" "ca432a" "e45c54"
+## 
+## $lab.internal
+## [1] "2e7967" "cd48bf" "dd73b6" "7ba446" "642cb4" "c7cd02"
+## 
+## $lab.basal
+## [1] "2e7967" "fc7f8f" "53d0b4" "3301f4" "c190fa" "d2d08f"
+```
+
+```r
+plot(dat)
+```
+
+<img src="vignettes/figs/input-1.png" title="plot of chunk input" alt="plot of chunk input" width="800px" height="800px" />
+
 We can now run `dibbler` on the data, and examine the output:
 
 ```r
-out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
+out <- dibbler()
+```
+
+```
+## Error in dibbler.data(): graph or group missing, and 'data' not provided
+```
+
+```r
 names(out)
 ```
 

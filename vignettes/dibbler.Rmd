@@ -66,9 +66,18 @@ g <- graph.data.frame(Salmonella$graph)
 g
 ```
 
+Data from the network and the genetic cluster can be merged and checked using `dibbler.data`.
+The resulting object is a list with class `dibbler.input` with a dedicated plot method:
+```{r input, out.width="800px", out.height="800px", fig.width=10, fig.height=10, dpi=100}
+dat <- dibbler.data(graph=g, group=Salmonella$cluster)
+names(dat)
+lapply(dat, head)
+plot(dat)
+```
+
 We can now run `dibbler` on the data, and examine the output:
 ```{r dibbler, out.width="800px", out.height="800px", fig.width=10, fig.height=10, dpi=100}
-out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
+out <- dibbler()
 names(out)
 head(out$freq)
 head(out$conf)
