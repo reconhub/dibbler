@@ -13,7 +13,7 @@ vignette: >
 ```{r setup, echo=FALSE}
 # set global chunk options: images will be 7x7 inches
 knitr::opts_chunk$set(fig.width=7, fig.height=7, fig.path="figs/", warning=FALSE)
-options(digits = 4)x
+options(digits = 4)
 ```
 *dibbler*: Investigation of food-borne disease outbreaks.
 
