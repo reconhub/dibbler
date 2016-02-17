@@ -54,7 +54,9 @@ All we need to run the method is:
 
 Here, all this information is contained in the *Salmonella* dataset:
 ```{r salmo}
-Salmonella
+names(Salmonella)
+head(Salmonella$graph)
+Salmonella$cluster
 ```
 
 We build a `igraph` object from the list of edges:
