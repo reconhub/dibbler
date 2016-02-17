@@ -19,6 +19,24 @@ The function \code{dibbler} is used for inferring the transmission of food-borne
 }
 \examples{
 
+if(require(igraph)){
+## generate graph from edge list
+Salmonella
+g <- graph.data.frame(Salmonella$graph)
+
+## run dibbler
+out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
+
+## check output
+names(out)
+head(out$freq)
+head(out$conf)
+out$graph
+
+## plot results
+plot(out$graph, vertex.label="",
+main="dibbler: inferred pathogen distribution")
+}
 }
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}

@@ -21,6 +21,24 @@
 #'
 #' @examples
 #'
+#' if(require(igraph)){
+#' ## generate graph from edge list
+#' Salmonella
+#' g <- graph.data.frame(Salmonella$graph)
+#'
+#' ## run dibbler
+#' out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
+#'
+#' ## check output
+#' names(out)
+#' head(out$freq)
+#' head(out$conf)
+#' out$graph
+#'
+#' ## plot results
+#' plot(out$graph, vertex.label="",
+#' main="dibbler: inferred pathogen distribution")
+#' }
 dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
     ## CHECKS ##
     if(is.null(x)) stop("x is NULL")
