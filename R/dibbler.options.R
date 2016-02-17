@@ -32,8 +32,8 @@ dibbler.graph.opt <- function(...){
                      col=NULL,
                      layout=igraph::layout_nicely,
                      seed=1,
-                     min.size=3,
-                     max.size=10,
+                     min.size=5,
+                     max.size=12,
                      label.family="sans",
                      label.color="black",
                      edge.label=FALSE)
