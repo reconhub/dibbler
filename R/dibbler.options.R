@@ -72,10 +72,12 @@ set.graph.opt <- function(g, opt, freq, conf){
         V(g)$pie.color <- list(opt$col)
     }
 
-    ## size
+    ## size: proportional to 'confidence'
     vsize <- conf-min(conf) # set min to zero
+    vsize[degree(g, mode="ou")==0] <- 0 # set tips to zero
     vsize <- (vsize/max(vsize)) * (opt$max.size - opt$min.size) # set offset from min
     vsize <- vsize + opt$min.size # set min
+
     V(g)$size <- vsize
 
     ## font
