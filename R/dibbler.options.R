@@ -18,7 +18,7 @@
 #'
 #' @export
 #' @importFrom utils modifyList
-#' @importFrom igraph "E" "E<-" "V" "V<-" "layout_nicely"
+#' @importFrom igraph "E" "E<-" "V" "V<-" "layout_nicely" "degree"
 #'
 #' @examples
 #' dibbler.graph.opt()
@@ -74,7 +74,7 @@ set.graph.opt <- function(g, opt, freq, conf){
 
     ## size: proportional to 'confidence'
     vsize <- conf-min(conf) # set min to zero
-    vsize[degree(g, mode="ou")==0] <- 0 # set tips to zero
+    vsize[igraph::degree(g, mode="ou")==0] <- 0 # set tips to zero
     vsize <- (vsize/max(vsize)) * (opt$max.size - opt$min.size) # set offset from min
     vsize <- vsize + opt$min.size # set min
 
