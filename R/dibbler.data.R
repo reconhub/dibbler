@@ -102,6 +102,6 @@ dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
                 lab.internal=lab.internal,
                 lab.basal=lab.basal
                 )
-    class(out) <- c("list", "dibbler.input")
+    class(out) <- c("dibbler.input", "list")
     return(out)
 } # end dibbler.data
