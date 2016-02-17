@@ -15,6 +15,16 @@
 #'
 #' @examples
 #'
+#' if(require(igraph)){
+#'
+#' ## generate graph from edge list
+#' Salmonella
+#' g <- graph.data.frame(Salmonella$graph)
+#'
+#' dibbler.data(graph=g, group=Salmonella$cluster)
+#'
+#' }
+#'
 dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
     ## PROCESS INPUT ##
      ## HANDLE 'DATA' ##
