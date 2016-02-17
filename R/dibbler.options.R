@@ -28,7 +28,7 @@ dibbler.graph.opt <- function(...){
     config <- list(...)
 
     ## SET DEFAULTS ##
-    defaults <- list(col.pal=dibbler.pal2,
+    defaults <- list(col.pal=dibbler.pal1,
                      col=NULL,
                      layout=igraph::layout_nicely,
                      seed=1,
