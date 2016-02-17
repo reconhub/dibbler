@@ -18,7 +18,7 @@
 #' plot(1:20, col=dibbler.pal1(20), pch=20, cex=6, main="dibbler.pal1")
 #' plot(1:10, col=dibbler.pal2(10), pch=20, cex=6, main="dibbler.pal2")
 dibbler.pal1 <- function(n){
-    colors <- c("#cc6666", "#ff8566", "#ffb366","#bfff00",
+    colors <- c("#cc6666", "#ff8566", "#ffb366","#33cccc",
                 "#85e0e0", "#adc2eb", "#9f9fdf","#666699")
     return(colorRampPalette(colors)(n))
 

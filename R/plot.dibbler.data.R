@@ -17,7 +17,7 @@
 #'
 #' @examples
 #'
-plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, ...){
+plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, cex=1, ...){
     ## convert input graph to network
     net <- igraph2network(x$graph)
     net.df <- network2data.frame(net)
@@ -26,31 +26,30 @@ plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler
     id.basal <- which(!v.names %in% net.df$to)
     id.internal <- which(!v.names %in% v.names[id.terminal])
 
-
-    ## get basic variables
+    ## basic variables
     N <- length(network.vertex.names(net))
     N.internal <- length(id.internal)
     N.tips <- length(id.terminal)
     K <- length(levels(x$group))
 
-    ## get vertex v.labels
+    ## vertex labels
     temp <- x$group
     v.lab <- rep("", N)
     names(v.lab) <- network.vertex.names(net)
     v.lab[names(x$group)] <- as.character(x$group)
 
-    ## get internal node colors
+    ## internal node colors
     v.col <- rep("grey",.5, N)
     names(v.col) <- network.vertex.names(net)
     v.col[id.internal] <- col.pal2(N.internal)
 
-    ## get group colors
+    ## group colors
     grp.col <- col.pal1(K)
 
-    ## get tip colors
+    ## tip colors
     v.col[names(x$group)] <- grp.col[x$group]
 
-    ## get shapes
+    ## vertex shapes
     v.sides <- rep(50, N)
     v.sides[id.terminal] <- 3
     v.sides[id.basal] <- 6
@@ -58,24 +57,28 @@ plot.dibbler.data <- function(x, y=NULL, col.pal1=dibbler.pal1, col.pal2=dibbler
     v.lwd[id.basal] <- 3
 
     ## set sizes
+    v.size <- sapply(v.names, function(e) sum(e == net.df$from))
+    v.size <- 1 + sqrt(v.size) * (cex/2)
     v.size[id.terminal] <- 1
 
+    ## edge color
+    e.df <- as.matrix(net, matrix.type="edgelist")
+    e.col <- v.col[attr(e.list, "vnames")[e.df[,1]]]
+
     ## make plot
-    plot(net, label=v.lab, label.cex=1,
+    out <- plot(net, label=v.lab, label.cex=cex,
          edge.col=e.col, vertex.col=v.col,
          label.col=v.col, vertex.cex=v.size,
          vertex.sides=v.sides,
          vertex.lwd=v.lwd, ...)
 
-    return(out)
-} # end dibbler.data
+    return(invisible(out))
+} # end plot.dibbler.data
 
 
 
 
 ## ## node size
-## v.size <- sapply(network.vertex.names(net), function(e) sum(e == net.dat$ancestor))
-## v.size <- 1 + sqrt(v.size)/2
 
 ## ## edge color
 ## e.list <- as.matrix(net, matrix.type="edgelist")
