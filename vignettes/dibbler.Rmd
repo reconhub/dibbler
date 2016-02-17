@@ -67,7 +67,7 @@ g
 ```
 
 We can now run `dibbler` on the data, and examine the output:
-```{r dibbler, out.width="800px", out.height="800px", fig.width=10, fig.height=10}
+```{r dibbler, out.width="800px", out.height="800px", fig.width=10, fig.height=10, dpi=100}
 out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
 names(out)
 head(out$freq)
