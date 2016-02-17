@@ -139,78 +139,62 @@ names(dat)
 ```
 
 ```r
-lapply(dat, head)
+dat$graph
 ```
 
 ```
-## $graph
-## 6 x 98 sparse Matrix of class "dgCMatrix"
+## IGRAPH DN-- 98 103 -- 
+## + attr: name (v/c)
+## + edges (vertex names):
+##  [1] 2e7967->dd73b6 2e7967->c7cd02 2e7967->2afba4 2e7967->4df851
+##  [5] 2e7967->48f980 2e7967->2d3187 cd48bf->e42c72 cd48bf->7d21f1
+##  [9] dd73b6->874918 7ba446->f83f2e 642cb4->327734 c7cd02->337cac
+## [13] 5b44d7->f7fc94 5b44d7->2fabc7 2afba4->5b44d7 2afba4->c1dc98
+## [17] 2afba4->b16cf0 2afba4->206e37 2afba4->958de8 fc7f8f->dd73b6
+## [21] 963c41->acf7bb 963c41->9f5aad f60e85->4941c6 4941c6->0b57e4
+## [25] 53d0b4->c7cd02 13dc78->0b6e5a 13dc78->78e5ba 13dc78->ca432a
+## [29] 13dc78->e45c54 9c0e59->80afad 6ddfa3->a7a903 3301f4->7ba446
+## + ... omitted several edges
+```
+
+```r
+dat$group
 ```
 
 ```
-##    [[ suppressing 98 column names '2e7967', 'cd48bf', 'dd73b6' ... ]]
-```
-
-```
-##                                                                           
-## 2e7967 . . 1 . . 1 . 1 . . . . . . . . . . . . . . . . . . . . . . . . . 1
-## cd48bf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 .
-## dd73b6 . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . .
-## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . .
-## 642cb4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## c7cd02 . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . .
-##                                                                           
-## 2e7967 . . . . . . . . . . . . . . 1 . . . . . 1 . . . . . . . . . . . . .
-## cd48bf . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . .
-## dd73b6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## 642cb4 . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . .
-## c7cd02 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-##                                                                   
-## 2e7967 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## cd48bf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## dd73b6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## 7ba446 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## 642cb4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## c7cd02 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-## 
-## $group
-## d81c17 064974 3b712b 486c07 6f5824 c77a84 
-##      A      A      A      A      A      A 
+## d81c17 064974 3b712b 486c07 6f5824 c77a84 1f4d22 f951d8 44060b 905296 
+##      A      A      A      A      A      A      A      A      A      A 
+## b4e5d5 0fffca 78e5ba e45c54 ca432a 0b6e5a ef7028 732379 82b4fc 9199be 
+##      A      B      B      B      B      B      B      B      B      B 
+## cede47 9f5aad acf7bb 24876f 37aad9 1e7431 0b57e4 09f4a0 a6fcaf f59e4b 
+##      B      C      C      C      C      C      C      C      C      C 
+## 1b55d2 7d3df0 b08945 f80b2e efee6b 6e0643 252679 35a9b6 80afad 1569a5 
+##      C      C      A      A      A      A      A      A      A      A 
+## 161814 c09e12 38881f 
+##      A      A      A 
 ## Levels: A B C
-## 
-## $lab.graph
-## [1] "2e7967" "cd48bf" "dd73b6" "7ba446" "642cb4" "c7cd02"
-## 
-## $lab.group
-## [1] "d81c17" "064974" "3b712b" "486c07" "6f5824" "c77a84"
-## 
-## $lab.match
-## [1] "0b6e5a" "acf7bb" "9f5aad" "0b57e4" "78e5ba" "ca432a"
-## 
-## $id.graph.match
-## [1] 20 57 58 59 60 61
-## 
-## $id.group.match
-## [1] 1 2 3 4 5 6
-## 
-## $id.terminal
-## [1] 57 58 59 60 61 62
-## 
-## $id.internal
-## [1] 1 2 3 4 5 6
-## 
-## $id.basal
-## [1]  1  9 13 17 21 26
-## 
-## $lab.terminal
-## [1] "acf7bb" "9f5aad" "0b57e4" "78e5ba" "ca432a" "e45c54"
-## 
-## $lab.internal
-## [1] "2e7967" "cd48bf" "dd73b6" "7ba446" "642cb4" "c7cd02"
-## 
-## $lab.basal
-## [1] "2e7967" "fc7f8f" "53d0b4" "3301f4" "c190fa" "d2d08f"
+```
+
+```r
+dat$lab.match
+```
+
+```
+##  [1] "0b6e5a" "acf7bb" "9f5aad" "0b57e4" "78e5ba" "ca432a" "e45c54"
+##  [8] "80afad" "cede47" "82b4fc" "732379" "9199be" "7d3df0" "c77a84"
+## [15] "6f5824" "3b712b" "1e7431" "37aad9" "44060b" "905296" "f951d8"
+## [22] "b4e5d5" "1b55d2" "a6fcaf" "24876f" "0fffca" "09f4a0" "38881f"
+## [29] "d81c17" "1569a5" "064974" "161814" "c09e12" "b08945" "f80b2e"
+## [36] "35a9b6" "6e0643" "efee6b" "252679" "f59e4b" "ef7028" "1f4d22"
+## [43] "486c07"
+```
+
+```r
+dat$id.basal
+```
+
+```
+## [1]  1  9 13 17 21 26 38
 ```
 
 ```r
@@ -224,7 +208,14 @@ The size of internal nodes is proportional to the number of immediately descendi
 Annotation of the terminal nodes indicate genetic clusters.
 
 
-We can now run `dibbler` on the data, and examine the output:
+We can now run `dibbler` on the data, and examine the output.
+
+The output items are:
+- `$freq`: a list containing vectors of **estimated cluster frequencies** for each internal node of the graph
+- `$conf`: a vector containing **confidence indices** for the estimates at each node; these are defined as the proportion of terminal nodes in the tree spanning from the node.
+- `$graph`: an `igraph` object containing the above information in addition to the original network
+
+The graph represent the inferred genetic composition of potential contamination using pie charts for each internal node. The size of the symbol is proportional to the 'confidence' associated to this give node.
 
 ```r
 out <- dibbler(dat)
@@ -304,11 +295,6 @@ plot(out$graph, vertex.label="")
 ```
 
 <img src="figs/dibbler-1.png" title="plot of chunk dibbler" alt="plot of chunk dibbler" width="800px" height="800px" />
-
-The output items are:
-- `$freq`: a list containing vectors of estimated cluster frequencies for each internal node of the graph
-- `$conf`: a vector containing confidence indices for the estimates at each node; these are defined as the proportion of terminal nodes in the tree spanning from the node.
-- `$graph`: an `igraph` object containing the above information in addition to the original network
 
 
 

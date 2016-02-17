@@ -78,7 +78,10 @@ The resulting object is a list with class `dibbler.input` with a dedicated plot 
 ```{r input, out.width="800px", out.height="800px", fig.width=10, fig.height=10, dpi=100}
 dat <- dibbler.data(graph=g, group=Salmonella$cluster)
 names(dat)
-lapply(dat, head)
+dat$graph
+dat$group
+dat$lab.match
+dat$id.basal
 plot(dat)
 ```
 
@@ -87,7 +90,14 @@ The size of internal nodes is proportional to the number of immediately descendi
 Annotation of the terminal nodes indicate genetic clusters.
 
 
-We can now run `dibbler` on the data, and examine the output:
+We can now run `dibbler` on the data, and examine the output.
+
+The output items are:
+- `$freq`: a list containing vectors of **estimated cluster frequencies** for each internal node of the graph
+- `$conf`: a vector containing **confidence indices** for the estimates at each node; these are defined as the proportion of terminal nodes in the tree spanning from the node.
+- `$graph`: an `igraph` object containing the above information in addition to the original network
+
+The graph represent the inferred genetic composition of potential contamination using pie charts for each internal node. The size of the symbol is proportional to the 'confidence' associated to this give node.
 ```{r dibbler, out.width="800px", out.height="800px", fig.width=10, fig.height=10, dpi=100}
 out <- dibbler(dat)
 names(out)
@@ -96,11 +106,6 @@ head(out$conf)
 out$graph
 plot(out$graph, vertex.label="")
 ```
-
-The output items are:
-- `$freq`: a list containing vectors of estimated cluster frequencies for each internal node of the graph
-- `$conf`: a vector containing confidence indices for the estimates at each node; these are defined as the proportion of terminal nodes in the tree spanning from the node.
-- `$graph`: an `igraph` object containing the above information in addition to the original network
 
 
 
