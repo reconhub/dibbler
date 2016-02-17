@@ -37,7 +37,7 @@ if(require(igraph) && require(network)){
 
 ## generate graph from edge list
 Salmonella
-g <- graph.data.frame(Salmonella$graph)
+g <- igraph::graph.data.frame(Salmonella$graph)
 
 input <- dibbler.data(graph=g, group=Salmonella$cluster)
 plot(input)

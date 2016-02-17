@@ -12,7 +12,10 @@
 #' @param col.pal1 a color palette to be used for the genetic clusters (tips)
 #' @param col.pal2 a color palette to be used for identifying internal nodes
 #' @param ... further arguments to be passed to \code{plot.network}
+#'
 #' @export
+#' @importFrom network network.vertex.names
+#' @importFrom graphics plot
 #'
 #' @return the same output as \code{plot.network}
 #'
@@ -24,7 +27,7 @@
 #'
 #' ## generate graph from edge list
 #' Salmonella
-#' g <- graph.data.frame(Salmonella$graph)
+#' g <- igraph::graph.data.frame(Salmonella$graph)
 #'
 #' input <- dibbler.data(graph=g, group=Salmonella$cluster)
 #' plot(input)
@@ -42,7 +45,7 @@ plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
     id.internal <- which(!v.names %in% v.names[id.terminal])
 
     ## basic variables
-    N <- length(network.vertex.names(net))
+    N <- length(network::network.vertex.names(net))
     N.internal <- length(id.internal)
     N.tips <- length(id.terminal)
     K <- length(levels(x$group))
@@ -50,12 +53,12 @@ plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
     ## vertex labels
     temp <- x$group
     v.lab <- rep("", N)
-    names(v.lab) <- network.vertex.names(net)
+    names(v.lab) <- v.names
     v.lab[names(x$group)] <- as.character(x$group)
 
     ## internal node colors
     v.col <- rep("grey",.5, N)
-    names(v.col) <- network.vertex.names(net)
+    names(v.col) <- v.names
     if(color.internal){
         v.col[id.internal] <- col.pal2(N.internal)
     }
