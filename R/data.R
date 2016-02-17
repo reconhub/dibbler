@@ -5,8 +5,8 @@
 #'
 #' @aliases fakeOutbreak
 #' @docType data
-#' @source Gastrointestinal Bacteria Reference Unit, Public Health England
-#' @author Thomas Inns, Philip Ashton, Tim Dallman, Roberto Vivancos
+#' @source Multi-agency Salmonella Enteritidis PT59 Outbreak Control Team, chaired by Public Health England
+#' @author Thomas Inns \email{Thomas.Inns@@phe.gov.uk}, Philip Ashton, Tim Dallman, Roberto Vivancos
 #' @keywords datasets
 #'
 "Salmonella"
