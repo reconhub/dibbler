@@ -13,7 +13,7 @@ vignette: >
 
 
 
-*dibbler*: Investigation of food-borne disease outbreaks.
+*dibbler*: investigation of food-borne disease outbreaks.
 =================================================
 
 > *And then you bit onto them, and learned once again that Cut-me-own-Throat Dibbler could find a
