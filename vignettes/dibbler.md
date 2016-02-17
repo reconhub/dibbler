@@ -195,7 +195,7 @@ out$graph
 plot(out$graph, vertex.label="")
 ```
 
-![plot of chunk dibbler](figs/dibbler-1.png)
+<img src="figs/dibbler-1.png" title="plot of chunk dibbler" alt="plot of chunk dibbler" width="800px" height="800px" />
 
 The output items are:
 - `$freq`: a list containing vectors of estimated cluster frequencies for each internal node of the graph
