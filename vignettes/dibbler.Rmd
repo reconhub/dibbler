@@ -43,36 +43,41 @@ library("dibbler")
 
 A short demo
 ------------------
-Here is a short demonstration of the package using a dummy dataset.
+Here is a short demonstration of the package using an anonymised Salmonella outbreak dataset.
 
-We first generate a labelled network using *igraph*:
+All we need to run the method is:
+1. a directed graph representing the **food network**, which can be provided as:
+  - a `data.frame` with two columns (to,from)
+  - a `igraph` object
+  - a `network` object
+2. a `factor` defining groups for some of the nodes of the network; this `factor` needs to be named, and the labels provided will be matched against the network.
 
-```{r data}
+Here, all this information is contained in the *Salmonella* dataset:
+```{r salmo}
+Salmonella
+```
+
+We build a `igraph` object from the list of edges:
+```{r g}
 library(igraph)
-
-set.seed(1)
-g1 <- make_tree(20, 3)
-
-## need this hack for named vertices
-temp <- data.frame(lapply(
-igraph2data.frame(g1), as.character),
-stringsAsFactors=FALSE)
-g1 <- graph.data.frame(temp)
+g <- graph.data.frame(Salmonella$graph)
+g
 ```
 
-Then we identify the 'tips' and generate draw cluster types from 4 clusters:
-```{r data2}
-tips <- which(degree(g1, mode="out")==0)
-grp <- factor(sample(letters[1:4], replace=TRUE, size=length(tips)))
-names(grp) <- tips
-```
-
-To run *dibbler*:
+We can now run `dibbler` on the data, and examine the output:
 ```{r dibbler}
-out <- dibbler(dibbler.data(g1, grp), graph.opt=dibbler.graph.opt(max.size=15))
-out
+out <- dibbler(dibbler.data(graph=g, group=Salmonella$cluster))
+names(out)
+head(out$freq)
+head(out$conf)
+out$graph
 plot(out$graph, vertex.label="")
 ```
+
+The output items are:
+- `$freq`: a list containing vectors of estimated cluster frequencies for each internal node of the graph
+- `$conf`: a vector containing confidence indices for the estimates at each node; these are defined as the proportion of terminal nodes in the tree spanning from the node.
+- `$graph`: an `igraph` object containing the above information in addition to the original network
 
 
 
