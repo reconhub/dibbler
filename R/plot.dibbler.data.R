@@ -80,7 +80,7 @@ plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
 
     ## edge color
     e.df <- as.matrix(net, matrix.type="edgelist")
-    e.col <- v.col[attr(e.list, "vnames")[e.df[,1]]]
+    e.col <- v.col[attr(e.df, "vnames")[e.df[,1]]]
 
     ## make plot
     out <- plot(net, label=v.lab, label.cex=lab.cex,
@@ -91,13 +91,3 @@ plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
 
     return(invisible(out))
 } # end plot.dibbler.input
-
-
-
-
-## ## node size
-
-## ## edge color
-## e.list <- as.matrix(net, matrix.type="edgelist")
-## e.col <- v.col[attr(e.list, "vnames")[e.list[,1]]]
-## #e.col <- v.col[net.dat$ancestor]
