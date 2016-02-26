@@ -15,6 +15,7 @@
 #'
 #' @export
 #' @importFrom visNetwork visNetwork
+#' @importFrom magrittr "%>%"
 #'
 #' @return the same output as \code{visNetwork}
 #'
@@ -36,13 +37,13 @@
 #'
 #' \dontrun{
 #' ## opens a browser
-#' viz.dibbler.input(input)
+#' vis.dibbler.input(input)
 #' }
 #' }
 #'
-vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
+vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, col.pal1=dibbler.pal1, ...){
                               ## color.internal=TRUE,
-                              ## col.pal1=dibbler.pal1, col.pal2=dibbler.pal2,
+                              ## col.pal2=dibbler.pal2,
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
     nodes <- out$nodes$id
@@ -87,9 +88,6 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
     ## SIZES
     out$nodes$value <- sapply(nodes, function(e) sum(e == out$edges$from))
 
-    ## set value
-    out$nodes$value <- v.size
-
 
     ## EDGES ##
     ## SHAPES
@@ -101,7 +99,18 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
 
 
     ## OUTPUT
+    ## escape if no plotting
     if(!plot) return(invisible(out))
 
-     visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
+    ## visNetwork output
+    out <- visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
+
+    ## add group info/color
+    out <- out %>% visGroups(groupname = "internal", color = "grey")
+    grp.col <- col.pal1(K)
+    for(i in seq.int(K)){
+        out <- out %>% visGroups(groupname = levels(x$group)[i], color = grp.col[i])
+    }
+
+    return(out)
 } # end viz.dibbler.input

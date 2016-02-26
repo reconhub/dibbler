@@ -5,7 +5,7 @@ Title: Investigation of food-borne disease outbreaks
 Authors@R: 
 	   c(TJ=person("Thibaut", "Jombart", , "thibautjombart@gmail.com", role = c("aut", "cre")))
 Depends:	R (>= 3.0.0)
-Imports: utils, graphics, igraph, network, visNetwork
+Imports: utils, graphics, igraph, network, visNetwork, magrittr
 Suggests:  testthat, knitr, rmarkdown
 Description: Tools for investigating of food-borne disease outbreaks using pathogen genome sequences.
 License: GPL (>=2)
