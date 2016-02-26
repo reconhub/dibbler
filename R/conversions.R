@@ -19,8 +19,8 @@
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
-#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
+#' \item{\code{\link{network2igraph2visNetwork}}}{}
 #' }
 network2data.frame <- function(x){
     ## check class
@@ -100,8 +100,8 @@ igraph2data.frame <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
-#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
+#' \item{\code{\link{network2igraph2visNetwork}}}{}
 #' }
 network2igraph <- function(x){
     ## check class
@@ -140,8 +140,8 @@ network2igraph <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
-#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
+#' \item{\code{\link{network2igraph2visNetwork}}}{}
 #' }
 igraph2network <- function(x){
     ## check class
@@ -162,9 +162,9 @@ igraph2network <- function(x){
 
 
 
-#' Convert a directed graphs from igraph to vizNetwork inputs
+#' Convert a directed graphs from igraph to visNetwork inputs
 #'
-#' The function convert a directed graph with the igraph format into inputs for vizNetwork.
+#' The function convert a directed graph with the igraph format into inputs for visNetwork.
 #'
 #' @export
 #' @importFrom igraph V
@@ -181,10 +181,10 @@ igraph2network <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
-#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
+#' \item{\code{\link{network2igraph2visNetwork}}}{}
 #' }
-igraph2vizNetwork <- function(x){
+igraph2visNetwork <- function(x){
     ## check class
     if(!inherits(x, what="igraph")) stop("x is not an igraph object")
 
@@ -203,9 +203,9 @@ igraph2vizNetwork <- function(x){
 
 
 
-#' Convert a directed graphs from network to vizNetwork inputs
+#' Convert a directed graphs from network to visNetwork inputs
 #'
-#' The function convert a directed graph with the network format into inputs for vizNetwork.
+#' The function convert a directed graph with the network format into inputs for visNetwork.
 #'
 #' @export
 #' @importFrom network network.vertex.names
@@ -222,10 +222,10 @@ igraph2vizNetwork <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
-#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
+#' \item{\code{\link{network2igraph2visNetwork}}}{}
 #' }
-network2vizNetwork <- function(x){
+network2visNetwork <- function(x){
     ## check class
     if(!inherits(x, what="network")) stop("x is not an network object")
 
