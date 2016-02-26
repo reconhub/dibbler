@@ -34,16 +34,16 @@
 #' input <- dibbler.data(graph=g, group=Salmonella$cluster)
 #'
 #' ## check info returned by function
-#' temp <- vis.dibbler.input(input, plot=FALSE)
+#' temp <- vis.dibbler.data(input, plot=FALSE)
 #' temp
 #'
 #' \dontrun{
 #' ## opens a browser
-#' vis.dibbler.input(input)
+#' vis.dibbler.data(input)
 #' }
 #' }
 #'
-vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
+vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
                               selector=TRUE, editor=TRUE,
                               col.pal=dibbler.pal1, col.internal="#ffbf80",
                               ...){
@@ -126,4 +126,4 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     ## set nodes borders
     out <- out %>% visNetwork::visNodes(borderWidth=2)
     return(out)
-} # end viz.dibbler.input
+} # end viz.dibbler.data
