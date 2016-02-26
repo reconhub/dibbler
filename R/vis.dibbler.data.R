@@ -59,22 +59,25 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
 
 
     ## NODES ##
+    ## LABELS
+    out$nodes$label <- nodes
+
     ## GROUP
     ## (groups will define color)
     v.group <- rep("internal", N)
     names(v.group) <- nodes
     v.group[names(x$group)] <- as.character(x$group)
 
-    ## ## group colors
-    ## grp.col <- col.pal1(K)
-
-
     ## set value
     out$nodes$group <- v.group
 
+    ## TITLE
+    ## (used when hovering over nodes)
+
+
     ## SHAPE
     ## vertex shapes
-    v.shape <- rep("circle", N)
+    v.shape <- rep("dot", N)
     v.shape[id.terminal] <- "triangle"
     v.shape[id.basal] <- "diamond"
 
@@ -82,9 +85,7 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
     out$nodes$shape <- v.shape
 
     ## SIZES
-    v.size <- sapply(nodes, function(e) sum(e == out$edges$from))
-    v.size <- 1 + sqrt(v.size) * (cex/2)
-    v.size[id.terminal] <- 1
+    out$nodes$value <- sapply(nodes, function(e) sum(e == out$edges$from))
 
     ## set value
     out$nodes$value <- v.size
@@ -94,6 +95,9 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
     ## SHAPES
     ## set value
     out$edges$arrows <- "to"
+
+    ## COLORS
+    out$edges$color <- "grey"
 
 
     ## OUTPUT
