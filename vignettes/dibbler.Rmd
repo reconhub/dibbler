@@ -90,7 +90,7 @@ The size of internal nodes is proportional to the number of immediately descendi
 Annotation of the terminal nodes indicate genetic clusters.
 
 Alternatively, we can also use `vis.dibbler.data` which exploits the *visNetwork* package to plot interactive networks:
-```{r vis}
+```{r vis, eval=FALSE}
 vis.dibbler.input(dat)
 ```
 
