@@ -9,12 +9,14 @@
 #' @param lab.cex a size factor for the tip annotations (genetic clusters)
 #' @param color.internal a logical indicating whether internal nodes and their descending edges should be colored
 #' @param col.pal1 a color palette to be used for the genetic clusters (tips)
-#' @param col.pal2 a color palette to be used for identifying internal nodes
 #' @param plot a logical indicating whether a plot should be displayed
+#' @param legend a logical indicating whether a legend should be added to the plot
+#' @param selector a logical indicating whether a group selector tool should be added to the plot
+#' @param editor a logical indicating whether an editor tool should be added to the plot
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
-#' @importFrom visNetwork visNetwork
+#' @importFrom visNetwork visNetwork visGroups visLegend
 #' @importFrom magrittr "%>%"
 #'
 #' @return the same output as \code{visNetwork}
@@ -41,9 +43,9 @@
 #' }
 #' }
 #'
-vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, col.pal1=dibbler.pal1, ...){
-                              ## color.internal=TRUE,
-                              ## col.pal2=dibbler.pal2,
+vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
+                              selector=TRUE, editor=TRUE,
+                              col.pal=dibbler.pal1, ...){
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
     nodes <- out$nodes$id
@@ -97,7 +99,6 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, col.pal1=dibbler.p
     ## COLORS
     out$edges$color <- "grey"
 
-
     ## OUTPUT
     ## escape if no plotting
     if(!plot) return(invisible(out))
@@ -107,9 +108,24 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, col.pal1=dibbler.p
 
     ## add group info/color
     out <- out %>% visGroups(groupname = "internal", color = "grey")
-    grp.col <- col.pal1(K)
+    grp.col <- col.pal(K)
     for(i in seq.int(K)){
         out <- out %>% visGroups(groupname = levels(x$group)[i], color = grp.col[i])
+    }
+
+    ## add legend
+    if(legend){
+        out <- out %>% visLegend()
+    }
+
+    ## add selector
+    if(selector){
+        out <- out %>% visOptions(selectedBy = "group")
+    }
+
+    ## add editor
+    if(editor){
+        out <- out %>% visOptions(manipulation = TRUE)
     }
 
     return(out)
