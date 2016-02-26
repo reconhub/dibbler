@@ -40,12 +40,12 @@
 #' }
 #' }
 #'
-vis.dibbler.input <- function(x, cex=1, lab.cex=1, color.internal=TRUE,
-                              col.pal1=dibbler.pal1, col.pal2=dibbler.pal2,
-                              plot=TRUE, ...){
+vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, ...){
+                              ## color.internal=TRUE,
+                              ## col.pal1=dibbler.pal1, col.pal2=dibbler.pal2,
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
-    nodes <- out$nodes
+    nodes <- out$nodes$id
     edges <- out$edges
 
     ## basic variables
@@ -59,22 +59,18 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, color.internal=TRUE,
 
 
     ## NODES ##
-    ## COLOR
-    ## internal node colors
-    v.col <- rep("grey",.5, N)
-    names(v.col) <- nodes
-    if(color.internal){
-        v.col[id.internal] <- col.pal2(N.internal)
-    }
+    ## GROUP
+    ## (groups will define color)
+    v.group <- rep("internal", N)
+    names(v.group) <- nodes
+    v.group[names(x$group)] <- as.character(x$group)
 
-    ## group colors
-    grp.col <- col.pal1(K)
+    ## ## group colors
+    ## grp.col <- col.pal1(K)
 
-    ## tip colors
-    v.col[names(x$group)] <- grp.col[x$group]
 
     ## set value
-    nodes$color <- v.col
+    out$nodes$group <- v.group
 
     ## SHAPE
     ## vertex shapes
@@ -83,7 +79,7 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, color.internal=TRUE,
     v.shape[id.basal] <- "diamond"
 
     ## set value
-    nodes$shape <- v.shape
+    out$nodes$shape <- v.shape
 
     ## SIZES
     v.size <- sapply(nodes, function(e) sum(e == out$edges$from))
@@ -91,26 +87,17 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, color.internal=TRUE,
     v.size[id.terminal] <- 1
 
     ## set value
-    nodes$value <- v.size
+    out$nodes$value <- v.size
 
 
     ## EDGES ##
-    ## COLOR
-    ## set value
-    edges$color <- v.col[edges[,1]]
-
-
     ## SHAPES
     ## set value
-    edges$arrows <- "to"
+    out$edges$arrows <- "to"
 
 
-    ## OUTPUT ##
-    ## GET OUTPUT
-    out <- list(nodes=nodes, edges=edges)
+    ## OUTPUT
+    if(!plot) return(invisible(out))
 
-    ## PLOT IF NEEDED
-    if(plot) visNetwork::visNetwork(nodes=nodes, edges=edges, ...)
-
-    return(invisible(out))
+     visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
 } # end viz.dibbler.input
