@@ -14,8 +14,7 @@
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
-#' @importFrom network network.vertex.names
-#' @importFrom graphics plot
+#' @importFrom visNetwork visNetwork
 #'
 #' @return the same output as \code{visNetwork}
 #'

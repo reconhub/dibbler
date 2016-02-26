@@ -36,7 +36,7 @@ network2data.frame <- function(x){
     out <- matrix(lab[temp], ncol=2)
     colnames(out) <- c("from","to")
 
-    return(as.data.frame(out))
+    return(as.data.frame(out, stringsAsFactors=FALSE))
 } # end network2data.frame
 
 
@@ -189,7 +189,7 @@ igraph2visNetwork <- function(x){
     if(!inherits(x, what="igraph")) stop("x is not an igraph object")
 
     ## get nodes
-    nodes <- data.frame(id=labels(V(x)))
+    nodes <- data.frame(id=labels(V(x)), stringsAsFactors=FALSE)
 
     ## get edges
     edges <- igraph2data.frame(x)
@@ -230,7 +230,7 @@ network2visNetwork <- function(x){
     if(!inherits(x, what="network")) stop("x is not an network object")
 
     ## get nodes
-    nodes <- data.frame(id=network::network.vertex.names(x))
+    nodes <- data.frame(id=network::network.vertex.names(x), stringsAsFactors=FALSE)
 
     ## get edges
     edges <- network2data.frame(x)
