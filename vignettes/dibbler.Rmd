@@ -91,7 +91,7 @@ Annotation of the terminal nodes indicate genetic clusters.
 
 Alternatively, we can also use `vis.dibbler.data` which exploits the *visNetwork* package to plot interactive networks:
 ```{r vis}
-vis.dibbler.data(dat)
+vis.dibbler.input(dat)
 ```
 
 We can now run `dibbler` on the data, and examine the output.
