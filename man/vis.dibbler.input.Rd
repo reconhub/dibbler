@@ -4,8 +4,8 @@
 \alias{vis.dibbler.input}
 \title{Plot input data for dibbler}
 \usage{
-vis.dibbler.input(x, cex = 1, lab.cex = 1, color.internal = TRUE,
-  col.pal1 = dibbler.pal1, col.pal2 = dibbler.pal2, plot = TRUE, ...)
+vis.dibbler.input(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
+  selector = TRUE, editor = TRUE, col.pal = dibbler.pal1, ...)
 }
 \arguments{
 \item{x}{an input dataset as returned by \code{dibbler.data}}
@@ -14,15 +14,19 @@ vis.dibbler.input(x, cex = 1, lab.cex = 1, color.internal = TRUE,
 
 \item{lab.cex}{a size factor for the tip annotations (genetic clusters)}
 
+\item{plot}{a logical indicating whether a plot should be displayed}
+
+\item{legend}{a logical indicating whether a legend should be added to the plot}
+
+\item{selector}{a logical indicating whether a group selector tool should be added to the plot}
+
+\item{editor}{a logical indicating whether an editor tool should be added to the plot}
+
+\item{...}{further arguments to be passed to \code{visNetwork}}
+
 \item{color.internal}{a logical indicating whether internal nodes and their descending edges should be colored}
 
 \item{col.pal1}{a color palette to be used for the genetic clusters (tips)}
-
-\item{col.pal2}{a color palette to be used for identifying internal nodes}
-
-\item{plot}{a logical indicating whether a plot should be displayed}
-
-\item{...}{further arguments to be passed to \code{visNetwork}}
 }
 \value{
 the same output as \code{visNetwork}
@@ -46,7 +50,7 @@ temp
 
 \dontrun{
 ## opens a browser
-viz.dibbler.input(input)
+vis.dibbler.input(input)
 }
 }
 
