@@ -23,8 +23,8 @@ Conversions in dibbler include:
 \item{\code{\link{igraph2data.frame}}}{}
 \item{\code{\link{igraph2network}}}{}
 \item{\code{\link{network2igraph}}}{}
-\item{\code{\link{igraph2igraph2visNetwork}}}{}
-\item{\code{\link{network2igraph2visNetwork}}}{}
+\item{\code{\link{igraph2visNetwork}}}{}
+\item{\code{\link{network2visNetwork}}}{}
 }
 }
 

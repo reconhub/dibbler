@@ -7,8 +7,7 @@
 #' @param x an input dataset as returned by \code{dibbler.data}
 #' @param cex a size factor for the nodes of the network
 #' @param lab.cex a size factor for the tip annotations (genetic clusters)
-#' @param color.internal a logical indicating whether internal nodes and their descending edges should be colored
-#' @param col.pal1 a color palette to be used for the genetic clusters (tips)
+#' @param col.pal a color palette to be used for the genetic clusters (tips)
 #' @param plot a logical indicating whether a plot should be displayed
 #' @param legend a logical indicating whether a legend should be added to the plot
 #' @param selector a logical indicating whether a group selector tool should be added to the plot
@@ -16,7 +15,7 @@
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
-#' @importFrom visNetwork visNetwork visGroups visLegend
+#' @importFrom visNetwork visNetwork visGroups visLegend visOptions
 #' @importFrom magrittr "%>%"
 #'
 #' @return the same output as \code{visNetwork}
@@ -34,7 +33,7 @@
 #' input <- dibbler.data(graph=g, group=Salmonella$cluster)
 #'
 #' ## check info returned by function
-#' temp <- viz.dibbler.input(input, plot=FALSE)
+#' temp <- vis.dibbler.input(input, plot=FALSE)
 #' temp
 #'
 #' \dontrun{
@@ -107,25 +106,25 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     out <- visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
 
     ## add group info/color
-    out <- out %>% visGroups(groupname = "internal", color = "grey")
+    out <- out %>% visNetwork::visGroups(groupname = "internal", color = "grey")
     grp.col <- col.pal(K)
     for(i in seq.int(K)){
-        out <- out %>% visGroups(groupname = levels(x$group)[i], color = grp.col[i])
+        out <- out %>% visNetwork::visGroups(groupname = levels(x$group)[i], color = grp.col[i])
     }
 
     ## add legend
     if(legend){
-        out <- out %>% visLegend()
+        out <- out %>% visNetwork::visLegend()
     }
 
     ## add selector
     if(selector){
-        out <- out %>% visOptions(selectedBy = "group")
+        out <- out %>% visNetwork::visOptions(selectedBy = "group")
     }
 
     ## add editor
     if(editor){
-        out <- out %>% visOptions(manipulation = TRUE)
+        out <- out %>% visNetwork::visOptions(manipulation = TRUE)
     }
 
     return(out)

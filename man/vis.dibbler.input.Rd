@@ -22,11 +22,9 @@ vis.dibbler.input(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
 
 \item{editor}{a logical indicating whether an editor tool should be added to the plot}
 
+\item{col.pal}{a color palette to be used for the genetic clusters (tips)}
+
 \item{...}{further arguments to be passed to \code{visNetwork}}
-
-\item{color.internal}{a logical indicating whether internal nodes and their descending edges should be colored}
-
-\item{col.pal1}{a color palette to be used for the genetic clusters (tips)}
 }
 \value{
 the same output as \code{visNetwork}
@@ -45,7 +43,7 @@ g <- igraph::graph.data.frame(Salmonella$graph)
 input <- dibbler.data(graph=g, group=Salmonella$cluster)
 
 ## check info returned by function
-temp <- viz.dibbler.input(input, plot=FALSE)
+temp <- vis.dibbler.input(input, plot=FALSE)
 temp
 
 \dontrun{

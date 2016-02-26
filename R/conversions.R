@@ -19,8 +19,8 @@
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
-#' \item{\code{\link{network2igraph2visNetwork}}}{}
+#' \item{\code{\link{igraph2visNetwork}}}{}
+#' \item{\code{\link{network2visNetwork}}}{}
 #' }
 network2data.frame <- function(x){
     ## check class
@@ -100,8 +100,8 @@ igraph2data.frame <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
-#' \item{\code{\link{network2igraph2visNetwork}}}{}
+#' \item{\code{\link{igraph2visNetwork}}}{}
+#' \item{\code{\link{network2visNetwork}}}{}
 #' }
 network2igraph <- function(x){
     ## check class
@@ -140,8 +140,8 @@ network2igraph <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
-#' \item{\code{\link{network2igraph2visNetwork}}}{}
+#' \item{\code{\link{igraph2visNetwork}}}{}
+#' \item{\code{\link{network2visNetwork}}}{}
 #' }
 igraph2network <- function(x){
     ## check class
@@ -181,8 +181,8 @@ igraph2network <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
-#' \item{\code{\link{network2igraph2visNetwork}}}{}
+#' \item{\code{\link{igraph2visNetwork}}}{}
+#' \item{\code{\link{network2visNetwork}}}{}
 #' }
 igraph2visNetwork <- function(x){
     ## check class
@@ -222,8 +222,8 @@ igraph2visNetwork <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
-#' \item{\code{\link{igraph2igraph2visNetwork}}}{}
-#' \item{\code{\link{network2igraph2visNetwork}}}{}
+#' \item{\code{\link{igraph2visNetwork}}}{}
+#' \item{\code{\link{network2visNetwork}}}{}
 #' }
 network2visNetwork <- function(x){
     ## check class
