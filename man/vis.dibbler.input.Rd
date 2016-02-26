@@ -5,7 +5,8 @@
 \title{Plot input data for dibbler}
 \usage{
 vis.dibbler.input(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
-  selector = TRUE, editor = TRUE, col.pal = dibbler.pal1, ...)
+  selector = TRUE, editor = TRUE, col.pal = dibbler.pal1,
+  col.internal = "#ffbf80", ...)
 }
 \arguments{
 \item{x}{an input dataset as returned by \code{dibbler.data}}
@@ -23,6 +24,8 @@ vis.dibbler.input(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
 \item{editor}{a logical indicating whether an editor tool should be added to the plot}
 
 \item{col.pal}{a color palette to be used for the genetic clusters (tips)}
+
+\item{col.internal}{a color for internal nodes}
 
 \item{...}{further arguments to be passed to \code{visNetwork}}
 }

@@ -8,6 +8,7 @@
 #' @param cex a size factor for the nodes of the network
 #' @param lab.cex a size factor for the tip annotations (genetic clusters)
 #' @param col.pal a color palette to be used for the genetic clusters (tips)
+#' @param col.internal a color for internal nodes
 #' @param plot a logical indicating whether a plot should be displayed
 #' @param legend a logical indicating whether a legend should be added to the plot
 #' @param selector a logical indicating whether a group selector tool should be added to the plot
@@ -15,7 +16,7 @@
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
-#' @importFrom visNetwork visNetwork visGroups visLegend visOptions
+#' @importFrom visNetwork visNetwork visGroups visLegend visOptions visNodes
 #' @importFrom magrittr "%>%"
 #'
 #' @return the same output as \code{visNetwork}
@@ -44,7 +45,8 @@
 #'
 vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
                               selector=TRUE, editor=TRUE,
-                              col.pal=dibbler.pal1, ...){
+                              col.pal=dibbler.pal1, col.internal="#ffbf80",
+                              ...){
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
     nodes <- out$nodes$id
@@ -96,7 +98,7 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     out$edges$arrows <- "to"
 
     ## COLORS
-    out$edges$color <- "grey"
+    out$edges$color <- col.internal
 
     ## OUTPUT
     ## escape if no plotting
@@ -106,7 +108,7 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     out <- visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
 
     ## add group info/color
-    out <- out %>% visNetwork::visGroups(groupname = "internal", color = "grey")
+    out <- out %>% visNetwork::visGroups(groupname = "internal", color = col.internal)
     grp.col <- col.pal(K)
     for(i in seq.int(K)){
         out <- out %>% visNetwork::visGroups(groupname = levels(x$group)[i], color = grp.col[i])
@@ -117,15 +119,11 @@ vis.dibbler.input <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
         out <- out %>% visNetwork::visLegend()
     }
 
-    ## add selector
-    if(selector){
-        out <- out %>% visNetwork::visOptions(selectedBy = "group")
-    }
+    ## add selector / editor
+    selectedBy <- ifelse(selector, "group", NULL)
+    out <- out %>% visNetwork::visOptions(selectedBy=selectedBy, manipulation=editor)
 
-    ## add editor
-    if(editor){
-        out <- out %>% visNetwork::visOptions(manipulation = TRUE)
-    }
-
+    ## set nodes borders
+    out <- out %>% visNetwork::visNodes(borderWidth=2)
     return(out)
 } # end viz.dibbler.input

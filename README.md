@@ -4,6 +4,10 @@
 
 
 
+```
+## Warning in options()$expression: partial match of 'expression' to
+## 'expressions'
+```
 
 
 *dibbler*: investigation of food-borne disease outbreaks.
@@ -200,6 +204,15 @@ The figure above shows terminal nodes as triangles, basal nodes as hexagons, and
 The size of internal nodes is proportional to the number of immediately descending nodes (out-degree).
 Annotation of the terminal nodes indicate genetic clusters.
 
+Alternatively, we can also use `vis.dibbler.data` which exploits the *visNetwork* package to plot interactive networks:
+
+```r
+vis.dibbler.data(dat)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "vis.dibbler.data"
+```
 
 We can now run `dibbler` on the data, and examine the output.
 
