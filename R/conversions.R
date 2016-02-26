@@ -19,6 +19,8 @@
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
+#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
+#' \item{\code{\link{network2igraph2vizNetwork}}}{}
 #' }
 network2data.frame <- function(x){
     ## check class
@@ -98,6 +100,8 @@ igraph2data.frame <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
+#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
+#' \item{\code{\link{network2igraph2vizNetwork}}}{}
 #' }
 network2igraph <- function(x){
     ## check class
@@ -136,6 +140,8 @@ network2igraph <- function(x){
 #' \item{\code{\link{igraph2data.frame}}}{}
 #' \item{\code{\link{igraph2network}}}{}
 #' \item{\code{\link{network2igraph}}}{}
+#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
+#' \item{\code{\link{network2igraph2vizNetwork}}}{}
 #' }
 igraph2network <- function(x){
     ## check class
@@ -187,6 +193,47 @@ igraph2vizNetwork <- function(x){
 
     ## get edges
     edges <- igraph2data.frame(x)
+
+    return(list(nodes=nodes, edges=edges))
+} # end igraph2network
+
+
+
+
+
+
+
+#' Convert a directed graphs from network to vizNetwork inputs
+#'
+#' The function convert a directed graph with the network format into inputs for vizNetwork.
+#'
+#' @export
+#' @importFrom network network.vertex.names
+#'
+#' @param x a \code{igraph} object.
+#'
+#' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
+#'
+#' @seealso
+#' \describe{
+#' Conversions in dibbler include:
+#' \item{\code{\link{network2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2data.frame}}}{}
+#' \item{\code{\link{igraph2network}}}{}
+#' \item{\code{\link{network2igraph}}}{}
+#' \item{\code{\link{igraph2igraph2vizNetwork}}}{}
+#' \item{\code{\link{network2igraph2vizNetwork}}}{}
+#' }
+network2vizNetwork <- function(x){
+    ## check class
+    if(!inherits(x, what="network")) stop("x is not an network object")
+
+    ## get nodes
+    nodes <- data.frame(id=network::network.vertex.names(x))
+
+    ## get edges
+    edges <- network2data.frame(x)
 
     return(list(nodes=nodes, edges=edges))
 } # end igraph2network
