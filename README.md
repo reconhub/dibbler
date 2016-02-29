@@ -4,12 +4,6 @@
 
 
 
-```
-## Warning in options()$expression: partial match of 'expression' to
-## 'expressions'
-```
-
-
 *dibbler*: investigation of food-borne disease outbreaks.
 =================================================
 
