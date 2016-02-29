@@ -4,6 +4,14 @@
 
 
 
+```
+## Warning in options()$expression: partial match of 'expression' to
+## 'expressions'
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "vis.dibbler.input"
+```
 
 
 *dibbler*: investigation of food-borne disease outbreaks.

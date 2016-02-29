@@ -8,7 +8,7 @@ knitr::opts_chunk$set(warning=FALSE)
 
 ## recompile vignette
 setwd("vignettes")
-knit("dibbler.Rmd")
+rmarkdown::render("dibbler.Rmd")
 setwd("../")
 ```
 
