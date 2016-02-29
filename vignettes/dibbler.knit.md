@@ -1,13 +1,16 @@
-[![Travis-CI Build Status](https://travis-ci.org/thibautjombart/dibbler.png?branch=master)](https://travis-ci.org/thibautjombart/dibbler)
+---
+title: "Investigation of food-borne disease outbreaks"
+author: "Thibaut Jombart"
+date: "2016-02-29"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{rmarkdown::render}
+  %\VignetteIndexEntry{Investigation of food-borne disease outbreaks.}
+  \usepackage[utf8]{inputenc}
+---
 
-[![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
 
 
-
-```
-## Warning in options()$expression: partial match of 'expression' to
-## 'expressions'
-```
 
 
 *dibbler*: investigation of food-borne disease outbreaks.
@@ -224,7 +227,7 @@ dat$id.basal
 plot(dat)
 ```
 
-<img src="vignettes/figs/input-1.png" title="" alt="" width="800px" height="800px" />
+<img src="figs/input-1.png" title="" alt="" width="800px" height="800px" />
 
 The figure above shows terminal nodes as triangles, basal nodes as hexagons, and other nodes as circles.
 The size of internal nodes is proportional to the number of immediately descending nodes (out-degree).
@@ -325,5 +328,7 @@ out$graph
 plot(out$graph, vertex.label="")
 ```
 
-<img src="vignettes/figs/dibbler-1.png" title="" alt="" width="800px" height="800px" />
+<img src="figs/dibbler-1.png" title="" alt="" width="800px" height="800px" />
+
+
 

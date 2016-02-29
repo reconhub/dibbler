@@ -8,13 +8,13 @@ knitr::opts_chunk$set(warning=FALSE)
 
 ## recompile vignette
 setwd("vignettes")
-rmarkdown::render("dibbler.Rmd")
+rmarkdown::render("dibbler.Rmd", clean=FALSE)
 setwd("../")
 ```
 
 ```{r include, results="asis", echo=FALSE, warning=FALSE}
 ## read md of the vignette
-mdInput <- readLines("vignettes/dibbler.md")
+mdInput <- readLines("vignettes/dibbler.knit.md")
 
 ## remove vignette-specific headers
 toRemove <- 1:10
