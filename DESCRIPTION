@@ -11,4 +11,4 @@ Description: Tools for investigating of food-borne disease outbreaks using patho
 License: GPL (>=2)
 LazyData: true
 RoxygenNote: 5.0.1
-VignetteBuilder: knitr
+VignetteBuilder: rmarkdown
