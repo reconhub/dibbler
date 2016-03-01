@@ -1,7 +1,6 @@
 context("Test conversions")
 
 
-## test data ##
 test_that("test: network <-> igraph", {
     ## skip on CRAN
     skip_on_cran()
