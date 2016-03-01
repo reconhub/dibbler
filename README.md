@@ -4,6 +4,8 @@
 
 
 
+
+
 *dibbler*: investigation of food-borne disease outbreaks.
 =================================================
 
@@ -95,32 +97,6 @@ We build a `igraph` object from the list of edges:
 
 ```r
 library(igraph)
-```
-
-```
-## 
-## Attaching package: 'igraph'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     decompose, spectrum
-```
-
-```
-## The following object is masked from 'package:testthat':
-## 
-##     compare
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     union
-```
-
-```r
 g <- graph.data.frame(Salmonella$graph)
 g
 ```
@@ -141,7 +117,7 @@ g
 ```
 
 Data from the network and the genetic cluster can be merged and checked using `dibbler.data`.
-The resulting object is a list with class `dibbler.input` with a dedicated plot method:
+The resulting object is a list with class `dibbler.data` with a dedicated plot method:
 
 ```r
 dat <- dibbler.data(graph=g, group=Salmonella$cluster)
@@ -227,7 +203,7 @@ Annotation of the terminal nodes indicate genetic clusters.
 Alternatively, we can also use `vis.dibbler.data` which exploits the *visNetwork* package to plot interactive networks:
 
 ```r
-vis.dibbler.input(dat)
+vis.dibbler.data(dat)
 ```
 
 We can now run `dibbler` on the data, and examine the output.
