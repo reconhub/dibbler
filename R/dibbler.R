@@ -10,7 +10,7 @@
 #' @export
 #' @importFrom igraph dfs
 #'
-#' @param x a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.
+#' @param x a list of the class 'dibbler.data' as returned by \code{\link{dibbler.data}}.
 #' @param graph.opt a list of options are returned by  \code{\link{dibbler.graph.opt}}.
 ## #' @param ... further arguments to be passed to other functions
 #'
@@ -43,7 +43,7 @@ dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
     ## CHECKS ##
     if(is.null(x)) stop("x is NULL")
     if(!is.list(x)) stop("x is not a list")
-    if(!inherits(x, "dibbler.input")) stop("x is not a dibbler.input object")
+    if(!inherits(x, "dibbler.data")) stop("x is not a dibbler.data object")
 
     ## PERFORM  ##
     freq <- list()

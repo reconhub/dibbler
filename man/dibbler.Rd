@@ -7,7 +7,7 @@
 dibbler(x = dibbler.data(), graph.opt = dibbler.graph.opt())
 }
 \arguments{
-\item{x}{a list of the class 'dibbler.input' as returned by \code{\link{dibbler.data}}.}
+\item{x}{a list of the class 'dibbler.data' as returned by \code{\link{dibbler.data}}.}
 
 \item{graph.opt}{a list of options are returned by  \code{\link{dibbler.graph.opt}}.}
 }

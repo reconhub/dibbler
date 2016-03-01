@@ -30,7 +30,7 @@ dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
      ## HANDLE 'DATA' ##
     if(!is.null(data)){
     ## escape if data has been processed already
-        if(inherits(data,"dibbler.input")) return(data)
+        if(inherits(data,"dibbler.data")) return(data)
     } else if(is.null(graph) || is.null(group)){
         stop("graph or group missing, and 'data' not provided")
     }
@@ -102,6 +102,6 @@ dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
                 lab.internal=lab.internal,
                 lab.basal=lab.basal
                 )
-    class(out) <- c("dibbler.input", "list")
+    class(out) <- c("dibbler.data", "list")
     return(out)
 } # end dibbler.data
