@@ -34,7 +34,7 @@
 #' plot(input, cex=2, color.internal=FALSE)
 #' }
 #'
-plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
+plot.dibbler.data <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
                                col.pal1=dibbler.pal1, col.pal2=dibbler.pal2, ...){
     ## convert input graph to network
     net <- igraph2network(x$graph)
@@ -93,4 +93,4 @@ plot.dibbler.input <- function(x, y=NULL, cex=1, lab.cex=1, color.internal=TRUE,
          vertex.lwd=v.lwd, ...)
 
     return(invisible(out))
-} # end plot.dibbler.input
+} # end plot.dibbler.data
