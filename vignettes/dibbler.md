@@ -1,7 +1,7 @@
 ---
 title: "Investigation of food-borne disease outbreaks"
 author: "Thibaut Jombart"
-date: "2016-03-01"
+date: "2016-03-03"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{rmarkdown::render}
@@ -104,6 +104,32 @@ We build a `igraph` object from the list of edges:
 
 ```r
 library(igraph)
+```
+
+```
+## 
+## Attaching package: 'igraph'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     decompose, spectrum
+```
+
+```
+## The following object is masked from 'package:testthat':
+## 
+##     compare
+```
+
+```
+## The following object is masked from 'package:base':
+## 
+##     union
+```
+
+```r
 g <- graph.data.frame(Salmonella$graph)
 g
 ```
