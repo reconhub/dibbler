@@ -45,7 +45,7 @@
 #'
 vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
                               selector=TRUE, editor=TRUE,
-                              col.pal=dibbler.pal1, col.internal="#ffbf80",
+                              col.pal=dibbler.pal1, col.internal="#b2accb",
                               ...){
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
@@ -120,7 +120,11 @@ vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     }
 
     ## add selector / editor
-    selectedBy <- ifelse(selector, "group", NULL)
+    if(selector) {
+        selectedBy <- group
+    } else {
+        selectedBy <- NULL
+    }
     out <- out %>% visNetwork::visOptions(selectedBy=selectedBy, manipulation=editor)
 
     ## set nodes borders
