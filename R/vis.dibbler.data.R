@@ -13,6 +13,8 @@
 #' @param legend a logical indicating whether a legend should be added to the plot
 #' @param selector a logical indicating whether a group selector tool should be added to the plot
 #' @param editor a logical indicating whether an editor tool should be added to the plot
+#' @param width the width of the output, in html compatible format (e.g. '90%' or '800px'
+#' @param height the height of the output, in html compatible format (e.g. '800px'
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
@@ -46,7 +48,7 @@
 vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
                               selector=TRUE, editor=TRUE,
                               col.pal=dibbler.pal2, col.internal="#b2accb",
-                              ...){
+                              width="90%", height="700px", ...){
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
     nodes <- out$nodes$id
@@ -105,7 +107,8 @@ vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     if(!plot) return(invisible(out))
 
     ## visNetwork output
-    out <- visNetwork::visNetwork(nodes=out$nodes, edges=out$edges, ...)
+    out <- visNetwork::visNetwork(nodes=out$nodes, edges=out$edges,
+                                  width=width, height=height, ...)
 
     ## add group info/color
     out <- out %>% visNetwork::visGroups(groupname = "internal", color = col.internal)

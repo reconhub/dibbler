@@ -238,6 +238,7 @@ Alternatively, we can also use `vis.dibbler.data` which exploits the *visNetwork
 ```r
 vis.dibbler.data(dat)
 ```
+<img src="figs/vis.dibbler.data.jpg" alt="vis.dibbler.data screenshot" style="width:500px;height:350px;">
 
 We can now run `dibbler` on the data, and examine the output.
 
