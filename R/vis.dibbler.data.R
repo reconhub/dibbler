@@ -45,7 +45,7 @@
 #'
 vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
                               selector=TRUE, editor=TRUE,
-                              col.pal=dibbler.pal1, col.internal="#b2accb",
+                              col.pal=dibbler.pal2, col.internal="#b2accb",
                               ...){
     ## convert input graph to visNetwork inputs
     out <- igraph2visNetwork(x$graph)
@@ -121,7 +121,7 @@ vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
 
     ## add selector / editor
     if(selector) {
-        selectedBy <- group
+        selectedBy <- "group"
     } else {
         selectedBy <- NULL
     }

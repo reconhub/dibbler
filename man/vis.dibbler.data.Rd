@@ -5,8 +5,8 @@
 \title{Plot input data for dibbler}
 \usage{
 vis.dibbler.data(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
-  selector = TRUE, editor = TRUE, col.pal = dibbler.pal1,
-  col.internal = "#ffbf80", ...)
+  selector = TRUE, editor = TRUE, col.pal = dibbler.pal2,
+  col.internal = "#b2accb", ...)
 }
 \arguments{
 \item{x}{an input dataset as returned by \code{dibbler.data}}
