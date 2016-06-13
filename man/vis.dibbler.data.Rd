@@ -6,7 +6,7 @@
 \usage{
 vis.dibbler.data(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
   selector = TRUE, editor = TRUE, col.pal = dibbler.pal2,
-  col.internal = "#b2accb", ...)
+  col.internal = "#b2accb", width = "90\%", height = "700px", ...)
 }
 \arguments{
 \item{x}{an input dataset as returned by \code{dibbler.data}}
@@ -26,6 +26,10 @@ vis.dibbler.data(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
 \item{col.pal}{a color palette to be used for the genetic clusters (tips)}
 
 \item{col.internal}{a color for internal nodes}
+
+\item{width}{the width of the output, in html compatible format (e.g. '90%' or '800px'}
+
+\item{height}{the height of the output, in html compatible format (e.g. '800px'}
 
 \item{...}{further arguments to be passed to \code{visNetwork}}
 }
