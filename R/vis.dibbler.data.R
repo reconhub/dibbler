@@ -18,7 +18,6 @@
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'
 #' @export
-#' @importFrom visNetwork visNetwork visGroups visLegend visOptions visNodes
 #' @importFrom magrittr "%>%"
 #'
 #' @return the same output as \code{visNetwork}
@@ -128,9 +127,13 @@ vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     } else {
         selectedBy <- NULL
     }
-    out <- out %>% visNetwork::visOptions(selectedBy=selectedBy, manipulation=editor)
+    out <- out %>% visNetwork::visOptions(selectedBy=selectedBy, manipulation=editor, highlightNearest = TRUE)
 
     ## set nodes borders
     out <- out %>% visNetwork::visNodes(borderWidth=2)
+
+    ## speed up rendering
+    out <- out %>% visNetwork::visPhysics(stabilization = FALSE)
+
     return(out)
 } # end viz.dibbler.data

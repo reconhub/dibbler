@@ -33,9 +33,8 @@ if(require(igraph)){
 
 ## generate graph from edge list
 Salmonella
-g <- graph.data.frame(Salmonella$graph)
 
-dibbler.data(graph=g, group=Salmonella$cluster)
+x <- with(Salmonella, dibbler.data(graph=graph, group=cluster))
 
 }
 
