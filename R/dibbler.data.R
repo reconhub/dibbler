@@ -13,6 +13,14 @@
 #'
 #' @return a list of data suitable for input for \code{\link{dibbler}}
 #'
+#' @details
+#' The \code{graph} can be provided as 3 different formats:
+#' \itemize{
+#' \item{data.frame}{with 2 columns defining edges of the graph}
+#' \item{igraph}{an igraph object, from the igraph package}
+#' \item{network}{an network object, from the network package}
+#' }
+#' 
 #' @examples
 #'
 #' if(require(igraph)){
