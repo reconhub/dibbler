@@ -33,18 +33,29 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
     }
 
 
-    colnames(x) <- c("from", "to")
-    x$from <- as.character(x$from)
-    x$to <- as.character(x$to)
+    ## 'x' will contain the edge data.frame, 'nodes' is a vector of all nodes in the graphs,
+    ## 'infected' is a named logical vector indicating which node has been infected (infected=TRUE).
 
+    colnames(x) <- c("from", "to") x$from <- as.character(x$from) x$to <- as.character(x$to)
     nodes <- unique(as.vector(unlist(as.matrix(x))))
-
     n.edges <- nrow(x)
     n.nodes <- length(nodes)
     infected <- rep(FALSE, n.nodes)
     names(infected) <- nodes
-
     probas <- c(p.trans, 1-p.trans)
+
+    ## This function finds descending nodes from a given 'infector' node, and decide which of these
+    ## gets infected based on the transmission probability; it returns a (possibly empty) vector of
+    ## characters containing node IDs.
+    spread.from.node <- function(infector, p.trans){
+        descending.nodes <- x$to[which(v==x$from)]
+        become.infected <- sample(c(TRUE,FALSE),
+                                  length(descending.nodes),
+                                  prob=probas, replace=TRUE)
+        out <- descending.nodes[become.infected]
+        return(out)
+    }
+
 
     ## Pick a first node
     has.been.infected <- new.infected <- sample(nodes, n.intro, replace=TRUE)
