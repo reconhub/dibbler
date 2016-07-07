@@ -19,8 +19,11 @@
 simulate.infection <- function(x, n.intro=1, p.trans=0.8){
 
     ## Various checks
+    if(inherits(x, "dibbler.data")){
+        x <- igraph2data.frame(x$graph)
+    }
     if (!inherits(x, c("matrix","data.frame"))) {
-        stop("x should be a matrix or a data.frame")
+        stop("x should be an igraph, a matrix or a data.frame")
     }
     if (ncol(x)!=2L) {
         stop("x must have two columns")
@@ -29,7 +32,7 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
         stop("n.intro is negative")
     }
     if (n.intro>1) {
-        stop("n.intro >1 not implememnted (ask Tim!!!)")
+        stop("n.intro >1 not implemented")
     }
 
 
@@ -84,7 +87,10 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
     ## - a vector of all nodes
     ## - infected: a vector of logicals, one value for each nodes; TRUE means this node has been
     ## infected
-    n.inf <- sum(infected)
-    out <- list(graph=x, infected=infected, n.infected=n.inf)
+    n.inf <- length(infected.and.removed)
+    infections <- rep("A", n.inf)
+    names(infections) <- infected.and.removed
+    out <- dibbler.data(graph=x, group=infections)
+    out$n.inf <- n.inf
     return(out)
 }
