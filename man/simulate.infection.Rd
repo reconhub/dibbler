@@ -4,20 +4,19 @@
 \alias{simulate.infection}
 \title{Simulation of infection over a network}
 \usage{
-\method{simulate}{infection}(x, n.intro = 1, proba.trans = 0.8)
+\method{simulate}{infection}(x, n.intro = 1, p.trans = 0.8)
 }
 \arguments{
 \item{x}{a graph represented as a 2-column matrix storing directed edges (from, to)}
 
 \item{n.intro}{number of introductions}
 
-\item{proba.trans}{a probability of transmission of the infection to a descending node}
+\item{p.trans}{a probability of transmission of the infection to a descending node}
 }
 \description{
 Under development, do not use!!
 }
 \author{
-Thibaut Jombart (\email{thibautjombart@gmail.com}) and
-Tim McMackin (\email{addyour@email.here.com})
+Thibaut Jombart (\email{thibautjombart@gmail.com})
 }
 

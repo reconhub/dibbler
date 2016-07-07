@@ -13,7 +13,7 @@
 #' @param legend a logical indicating whether a legend should be added to the plot
 #' @param selector a logical indicating whether a group selector tool should be added to the plot
 #' @param editor a logical indicating whether an editor tool should be added to the plot
-#' @param width the width of the output, in html compatible format (e.g. '90%' or '800px'
+#' @param width the width of the output, in html compatible format (e.g. '90\%' or '800px'
 #' @param height the height of the output, in html compatible format (e.g. '800px'
 #' @param ... further arguments to be passed to \code{visNetwork}
 #'

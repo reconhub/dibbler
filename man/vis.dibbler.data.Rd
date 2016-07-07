@@ -27,7 +27,7 @@ vis.dibbler.data(x, cex = 1, lab.cex = 1, plot = TRUE, legend = TRUE,
 
 \item{col.internal}{a color for internal nodes}
 
-\item{width}{the width of the output, in html compatible format (e.g. '90%' or '800px'}
+\item{width}{the width of the output, in html compatible format (e.g. '90\%' or '800px'}
 
 \item{height}{the height of the output, in html compatible format (e.g. '800px'}
 

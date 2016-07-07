@@ -4,12 +4,11 @@
 #'
 #'
 #' @author
-#' Thibaut Jombart (\email{thibautjombart@@gmail.com}) and
-#' Tim McMackin (\email{addyour@@email.here.com})
+#' Thibaut Jombart (\email{thibautjombart@@gmail.com})
 #'
 #' @param x a graph represented as a 2-column matrix storing directed edges (from, to)
 #' @param n.intro number of introductions
-#' @param proba.trans a probability of transmission of the infection to a descending node
+#' @param p.trans a probability of transmission of the infection to a descending node
 #'
 
 ## We pick a random node which will be the starting point of the outbreak; then a random process
@@ -17,7 +16,7 @@
 ## will need to keep track of the nodes browsed to avoid infinite recursion. In the case of
 ## multiple introductions, we just repeat the process as many times as needed.
 
-simulate.infection <- function(x, n.intro=1, proba.trans=0.8){
+simulate.infection <- function(x, n.intro=1, p.trans=0.8){
 
     ## Various checks
     if (!inherits(x, c("matrix","data.frame"))) {
@@ -45,7 +44,7 @@ simulate.infection <- function(x, n.intro=1, proba.trans=0.8){
     infected <- rep(FALSE, n.nodes)
     names(infected) <- nodes
 
-    probas <- c(proba.trans, 1-proba.trans)
+    probas <- c(p.trans, 1-p.trans)
 
     ## Pick a first node
     has.been.infected <- new.infected <- sample(nodes, n.intro, replace=TRUE)
