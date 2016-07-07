@@ -33,9 +33,10 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
     }
 
 
-    ## 'x' will contain the edge data.frame, 'nodes' is a vector of all nodes in the graphs,
-
-    colnames(x) <- c("from", "to") x$from <- as.character(x$from) x$to <- as.character(x$to)
+    ## 'x' will contain the edge data.frame, 'nodes' is a vector of all nodes in the graph
+    colnames(x) <- c("from", "to")
+    x$from <- as.character(x$from)
+    x$to <- as.character(x$to)
     nodes <- unique(as.vector(unlist(as.matrix(x))))
 
     ## This function finds descending nodes from a given 'infector' node, and decide which of these
@@ -50,7 +51,12 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
         return(out)
     }
 
-    ## Pick a first node
+
+    ## Initialise algorithm
+
+    ## infectious: vector of currently infectious node IDs
+    ## infected.and.removed: vector of previously infected node IDs
+
     infectious <- sample(nodes, n.intro, replace=TRUE)
     infected.and.removed <- character(0)
 
@@ -64,7 +70,7 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
     ## iii) move 'current.infector' from 'infectious' to 'infected.and.removed'
     ## repeat until 'infectious' is empty
 
-    while(length(new.infected)>0){
+    while(length(infectious)>0){
         current.infector <- infectious[1]
         infected.and.removed <- c(infected.and.removed, current.infector)
         new.infected <- setdiff(spread.from.node(current.infector, p.trans),

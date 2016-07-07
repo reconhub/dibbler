@@ -129,8 +129,8 @@ vis.dibbler.data <- function(x, cex=1, lab.cex=1, plot=TRUE, legend=TRUE,
     }
     out <- out %>% visNetwork::visOptions(selectedBy=selectedBy, manipulation=editor, highlightNearest = TRUE)
 
-    ## set nodes borders
-    out <- out %>% visNetwork::visNodes(borderWidth=2)
+    ## set nodes borders, shadows, etc.
+    out <- out %>% visNetwork::visNodes(borderWidth=2, shadow=list(enabled=TRUE, size=10))
 
     ## speed up rendering
     out <- out %>% visNetwork::visPhysics(stabilization = FALSE)
