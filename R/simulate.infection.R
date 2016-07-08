@@ -31,9 +31,6 @@ simulate.infection <- function(x, n.intro=1, p.trans=0.8){
     if (n.intro<0) {
         stop("n.intro is negative")
     }
-    if (n.intro>1) {
-        stop("n.intro >1 not implemented")
-    }
 
 
     ## 'x' will contain the edge data.frame, 'nodes' is a vector of all nodes in the graph
