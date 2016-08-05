@@ -41,9 +41,7 @@
 #' }
 dibbler <- function(x=dibbler.data(), graph.opt=dibbler.graph.opt()){
     ## CHECKS ##
-    if(is.null(x)) stop("x is NULL")
-    if(!is.list(x)) stop("x is not a list")
-    if(!inherits(x, "dibbler.data")) stop("x is not a dibbler.data object")
+    check.data(x)
 
     ## PERFORM  ##
     freq <- list()
