@@ -88,7 +88,8 @@ mono.tree <- function(x=dibbler.data()){
 
     ## At this stage, 'trees' contains all monochromatic trees. We need to remove those contained in
     ## larger ones (see item 4 of the algo above).
-    for (i in seq_along(trees)) {
+    i <- 1L
+    while (i < length(trees)) {
         tree <- trees[[i]]
         case.size <- case.sizes[i]
 
@@ -99,9 +100,21 @@ mono.tree <- function(x=dibbler.data()){
             trees <- trees[-i]
             compositions <- compositions[-i]
             case.sizes <- case.sizes[-i]
+        } else {
+
+            ## move to the next tree
+            i <- i + 1
         }
     }
 
+
+    ## TODO: would need to group trees by tip composition
+    tip.compositions <- vapply(compositions, function(e)
+                               paste(sort(names(e)), collapse="-"), character(1L))
+
+    trees <- split(trees, tip.compositions)
+    compositions <- split(compositions, tip.compositions)
+    case.sizes <- split(case.sizes, tip.compositions)
 
 
     ## shape output and return result
