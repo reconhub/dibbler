@@ -27,16 +27,8 @@
 #'
 #' ## run mono.tree
 #' out <- mono.tree(dibbler.data(graph=g, group=Salmonella$cluster))
-#'
-#' ## check output
 #' names(out)
-#' head(out$freq)
-#' head(out$conf)
-#' out$graph
-#'
-#' ## plot results
-#' plot(out$graph, vertex.label="",
-#' main="dibbler: inferred pathogen distribution")
+#' out$trees
 #' }
 mono.tree <- function(x=dibbler.data()){
     ## CHECKS ##
@@ -68,7 +60,7 @@ mono.tree <- function(x=dibbler.data()){
         tree <- names(tree)[!is.na(tree)]
 
         ## cluster composition of tree
-        compo <- factor(na.omit(x$group[tree]))
+        compo <- factor(stats::na.omit(x$group[tree]))
 
         ## compute case sizes
         case.size <- length(compo)
