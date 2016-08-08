@@ -112,10 +112,30 @@ mono.tree <- function(x=dibbler.data()){
     trees <- split(trees, case.compositions)
 
 
-    ## shape output and return result
+    ## Shape output and return result
+
+    ## We return a list of the form:
+
+    ## $[case.composition1]
+    ## $[case.composition2]
+    ## ...
+    ## where each case composition is a list of trees:
+    ## ...$tree1
+    ## ...$tree2
+    ## where each tree contains:
+    ## ...$tree (a vector of node labels)
+    ## ...$cases (a named factor giving cluster composition, with names = node labels)
+    ## ...$n.cases (the number of cases)
+
+    ## The ouput is ordered by decreasing composition sizes.
+
+    ## Each composition is ordered by decreasing ratio of
+    ## n.cases / length(tree)
+
     out <- vector(length(trees), mode="list")
     names(out) <- names(trees)
 
+    ## build the output list (not yet ordered)
     for (i in seq_along(trees)) {
             out[[i]] <- list()
 
@@ -129,6 +149,19 @@ mono.tree <- function(x=dibbler.data()){
             }
 
             names(out[[i]]) <- paste("tree", seq_along(trees[[i]]), sep = ".")
+    }
+
+    ## order the output by composition size
+    n.cases <- vapply(out, function(e) e[[1]]$n.cases, 0L)
+    new.order <- order(n.cases, decreasing=TRUE)
+    out <- out[new.order]
+
+    ## order each composition by n.cases/tree size ratio
+    for (i in seq_along(out)) {
+        ratio <- vapply(out[[i]], function(e) e$n.cases / length(e$tree),
+                        double(1))
+        new.order <- order(ratio, decreasing=TRUE)
+        out[[i]] <- out[[i]][new.order]
     }
 
     return(out)
