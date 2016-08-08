@@ -18,18 +18,23 @@
 #' \item{\code{\link{dibbler.data}}}{to prepare the input data.}
 #' }
 #'
+#' @return
+#' A list with the following components:
+#' \itemize{
+#' \item
+#' }
 #' @examples
 #'
-#' if(require(igraph)){
 #' ## generate graph from edge list
 #' Salmonella
-#' g <- graph.data.frame(Salmonella$graph)
+#'
+#' x <- with(Salmonella, dibbler.data(graph=graph, group=cluster))
 #'
 #' ## run mono.tree
-#' out <- mono.tree(dibbler.data(graph=g, group=Salmonella$cluster))
+#' out <- mono.tree(x)
 #' names(out)
 #' out$trees
-#' }
+#'
 mono.tree <- function(x=dibbler.data()){
     ## CHECKS ##
     check.data(x)
@@ -101,25 +106,30 @@ mono.tree <- function(x=dibbler.data()){
 
 
     ## TODO: would need to group trees by tip composition
-    tip.compositions <- vapply(compositions, function(e)
+    case.compositions <- vapply(compositions, function(e)
                                paste(sort(names(e)), collapse="-"), character(1L))
 
-    trees <- split(trees, tip.compositions)
-    compositions <- split(compositions, tip.compositions)
-    case.sizes <- split(case.sizes, tip.compositions)
+    trees <- split(trees, case.compositions)
 
 
     ## shape output and return result
-    out <- list(trees = trees,
-                compositions = compositions,
-                case.sizes = case.sizes)
+    out <- vector(length(trees), mode="list")
+    names(out) <- names(trees)
 
-    ## ## SET OUTPUT GRAPH ATTRIBUTES ##
-    ## graph <- set.graph.opt(x$graph, graph.opt, freq=freq, conf=conf)
+    for (i in seq_along(trees)) {
+            out[[i]] <- list()
 
-    ## ## SHAPE/RETURN OUTPUT ##
-    ## names(freq) <- names(conf) <- x$lab.graph
-    ## out <- list(freq=freq, conf=conf, graph=graph)
+            for (j in seq_along(trees[[i]])) {
+                tree <-  trees[[i]][[j]]
+                cases = factor(stats::na.omit(x$group[tree]))
+                out[[i]][[j]] <- list(tree = tree,
+                                      cases = cases,
+                                      n.cases = length(cases)
+                                      )
+            }
+
+            names(out[[i]]) <- paste("tree", seq_along(trees[[i]]), sep = ".")
+    }
 
     return(out)
 }

@@ -16,11 +16,11 @@
 #' @details
 #' The \code{graph} can be provided as 3 different formats:
 #' \itemize{
-#' \item{data.frame}{with 2 columns defining edges of the graph}
-#' \item{igraph}{an igraph object, from the igraph package}
-#' \item{network}{an network object, from the network package}
+#' \item data.frame with 2 columns defining edges of the graph
+#' \item graph an igraph object, from the igraph package
+#' \item network an network object, from the network package
 #' }
-#' 
+#'
 #' @examples
 #'
 #' if(require(igraph)){
@@ -29,7 +29,7 @@
 #' Salmonella
 #'
 #' x <- with(Salmonella, dibbler.data(graph=graph, group=cluster))
-#' 
+#'
 #' }
 #'
 dibbler.data <- function(graph=NULL, group=NULL, data=NULL){
