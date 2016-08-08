@@ -9,6 +9,21 @@ mono.tree(x = dibbler.data())
 \arguments{
 \item{x}{a list of the class 'dibbler.data' as returned by \code{\link{dibbler.data}}.}
 }
+\value{
+A list of monochromatic trees assembled by case composition, so that each component
+corresponds to a unique set of cases.  Each composition contains the following components:
+
+\itemize{
+\item cases: a vector of case node labels
+\item n.cases: the number of cases in this composition
+\item trees: a list of corresponding monochromatic trees
+}
+Each tree is defined as a vector of node labels.
+Compositions are ordered by sizes (largest trees first).
+
+Within a composition, trees are ordered from the smallest one (i.e., closest to the tips) to the
+largest one.
+}
 \description{
 The function \code{mono.tree} identifies subtrees of a food distribution network which contain only one pathogenic lineage.
 }
@@ -17,16 +32,17 @@ The function \code{mono.tree} identifies subtrees of a food distribution network
 }
 \examples{
 
-if(require(igraph)){
 ## generate graph from edge list
 Salmonella
-g <- graph.data.frame(Salmonella$graph)
+
+x <- with(Salmonella, dibbler.data(graph=graph, group=cluster))
 
 ## run mono.tree
-out <- mono.tree(dibbler.data(graph=g, group=Salmonella$cluster))
+out <- mono.tree(x)
 names(out)
-out$trees
-}
+
+out[[1]] # look at largest composition
+
 }
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}

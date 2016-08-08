@@ -19,10 +19,19 @@
 #' }
 #'
 #' @return
-#' A list with the following components:
+#' A list of monochromatic trees assembled by case composition, so that each component
+#' corresponds to a unique set of cases.  Each composition contains the following components:
+#'
 #' \itemize{
-#' \item
+#' \item cases: a vector of case node labels
+#' \item n.cases: the number of cases in this composition
+#' \item trees: a list of corresponding monochromatic trees
 #' }
+#' Each tree is defined as a vector of node labels.
+#' Compositions are ordered by sizes (largest trees first).
+#'
+#' Within a composition, trees are ordered from the smallest one (i.e., closest to the tips) to the
+#' largest one.
 #' @examples
 #'
 #' ## generate graph from edge list
@@ -33,7 +42,8 @@
 #' ## run mono.tree
 #' out <- mono.tree(x)
 #' names(out)
-#' out$trees
+#'
+#' out[[1]] # look at largest composition
 #'
 mono.tree <- function(x=dibbler.data()){
     ## CHECKS ##
@@ -116,16 +126,17 @@ mono.tree <- function(x=dibbler.data()){
 
     ## We return a list of the form:
 
-    ## $[case.composition1]
-    ## $[case.composition2]
+    ##   $[case.composition1]
+    ##   $[case.composition2]
     ## ...
-    ## where each case composition is a list of trees:
-    ## ...$tree1
-    ## ...$tree2
-    ## where each tree contains:
-    ## ...$tree (a vector of node labels)
-    ## ...$cases (a named factor giving cluster composition, with names = node labels)
-    ## ...$n.cases (the number of cases)
+
+    ## Where a composition is a defined as a set of cases included in the tree; each case
+    ## composition is a list with:
+    ##   $cases: vector of case node labels
+    ##   $n.cases: number of cases
+    ##   $trees: a list of trees
+
+    ## where each tree is a vector of node labels.
 
     ## The ouput is ordered by decreasing composition sizes.
 
@@ -137,31 +148,25 @@ mono.tree <- function(x=dibbler.data()){
 
     ## build the output list (not yet ordered)
     for (i in seq_along(trees)) {
-            out[[i]] <- list()
-
-            for (j in seq_along(trees[[i]])) {
-                tree <-  trees[[i]][[j]]
-                cases = factor(stats::na.omit(x$group[tree]))
-                out[[i]][[j]] <- list(tree = tree,
-                                      cases = cases,
-                                      n.cases = length(cases)
-                                      )
-            }
-
-            names(out[[i]]) <- paste("tree", seq_along(trees[[i]]), sep = ".")
+        out[[i]] <- list()
+        first.tree <- trees[[i]][[1L]]
+        out[[i]]$cases <- factor(stats::na.omit(x$group[first.tree]))
+        out[[i]]$n.cases <- length(out[[i]]$cases)
+        out[[i]]$trees <- trees[[i]]
     }
 
     ## order the output by composition size
-    n.cases <- vapply(out, function(e) e[[1]]$n.cases, 0L)
+    n.cases <- vapply(out, function(e) e$n.cases, 0L)
     new.order <- order(n.cases, decreasing=TRUE)
     out <- out[new.order]
 
     ## order each composition by n.cases/tree size ratio
+    ## as each composition has the same number of cases,
+    ## we effectively sort by increasing tree size
     for (i in seq_along(out)) {
-        ratio <- vapply(out[[i]], function(e) e$n.cases / length(e$tree),
-                        double(1))
-        new.order <- order(ratio, decreasing=TRUE)
-        out[[i]] <- out[[i]][new.order]
+        tree.size <- sapply(out[[i]]$trees, length)
+        new.order <- order(tree.size)
+        out[[i]]$trees <- out[[i]]$trees[new.order]
     }
 
     return(out)
