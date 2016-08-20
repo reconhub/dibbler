@@ -1,0 +1,77 @@
+## function to visualise monochromatic trees on a visNetwork graph
+## @author Tim McMackin /email{timmcm@@gmail.com}
+
+
+## x should be a dibbler.data dataset
+
+## example using Salmonella dataset from dibbler:
+## x = with(Salmonella, dibbler.data(graph = graph, group = cluster))
+
+vis.mono <- function(x, plot = TRUE, legend = TRUE, selector = TRUE, editor = TRUE, 
+                     col.pal = c("red", "yellow", "blue", "green", "orange", "purple")){
+
+## input data - run mono.tree function and convert x to visNetwork object
+mono <- mono.tree(x)
+out <- igraph2visNetwork(x$graph)
+
+## set nodes and edges 
+nodes <- data.frame(id = out$nodes$id)
+edges <- data.frame(out$edges, arrows = "to")
+
+N <- length(out$nodes$id)
+
+
+## Combining all mono trees into factor; cases define levels 
+
+result <- as.factor(rep(levels(mono[[1]]$cases), length(as.factor(unique(unlist(mono[[1]]$trees))))))
+names(result) <- as.factor(unique(unlist(mono[[1]]$trees)))
+
+for(i in 2:length(mono)){
+  treedim <- as.factor(rep(levels(mono[[i]]$cases), length(as.factor(unique(unlist(mono[[i]]$trees))))))
+  names(treedim) <- as.factor(unique(unlist(mono[[i]]$trees)))
+  result <- unlist(list(result, treedim))
+}
+
+##groups: groups define colour 
+
+##colour palette for groups
+col.pal = c("red", "yellow", "blue", "green", "orange", "purple")
+
+##define groups
+v.group <- rep("unknown", N)
+names(v.group) <- out$nodes$id
+v.group[names(result)] <- as.character(result)
+nodes$group <- v.group
+k <- length(levels(result))
+
+##Node shape
+v.shape <- rep("dot", N)
+case.shape = which(!nodes$id %in% edges$from)
+v.shape[case.shape] = "diamond"
+nodes$shape <- v.shape 
+
+## VisNetwork output:
+
+vis <- visNetwork(nodes, edges, main = "Outbreak Network", height = "500px", width = "100%")
+
+
+##group colours
+vis <- vis %>% visGroups(groupname = "unknown", color = "lightgreen") 
+
+for (j in 1:k){
+vis <- vis %>% visGroups(groupname = levels(result)[j], color = col.pal[j])
+}
+
+##nodes 
+vis <- vis %>% visNodes(shadow = list(enabled = TRUE, size = 10))
+
+##add legend
+vis <- vis %>% visLegend()  
+
+##add selector
+selectedBy <- "group"
+
+vis <- vis%>% visOptions(selectedBy= selectedBy, highlightNearest = TRUE)
+
+return(vis)
+}
