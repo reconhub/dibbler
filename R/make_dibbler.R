@@ -60,29 +60,27 @@ make_dibbler <- function(net, nodes_data, from = 1L, to = 2L, id = 1L) {
                                          from = from, to = to,
                                          directed = TRUE)
     
-    if ("node_type" %in% names(out$linelist)) {
-        msg <- "A column 'node_type' exists in nodes_data and will be erased."
-        warning(msg)
-    }
-
 
     ## determine the type of nodes: entry, internal, or terminal
     
     ids <- get_id(out, "contacts")
-    supp_node_data <- data.frame(id = ids,
-                                 stringsAsFactors = FALSE)
     in_deg <- get_degree(x, "in")
     out_deg <- get_degree(x, "out")
     entry <- names(which(in_deg == 0L & out_deg > 0))
     terminal <- names(which(in_deg > 0 & out_deg == 0L))
-    node_type <- rep("internal", nrow(supp_node_data))
+    node_type <- rep("internal", length(ids))
+    names(node_type) <- ids
     node_type[ids %in% entry] <- "entry"
     node_type[ids %in% terminal] <- "terminal"
-    supp_node_data$node_type <- node_type
 
-    out$linelist <- merge(out$linelist,
-                          supp_node_data,
-                          by = "id", all = TRUE)
+    out$node_type <- node_type
+    
+    ## supp_node_data <- data.frame(id = ids,
+    ##                              stringsAsFactors = FALSE)
+    ## supp_node_data$node_type <- node_type
+    ## out$linelist <- merge(out$linelist,
+    ##                       supp_node_data,
+    ##                       by = "id", all = TRUE)
     
     class(out) <- c("dibbler", "epicontacts")
     return(out)
