@@ -44,12 +44,11 @@ names(out)
 out[[1]] # look at largest composition
 
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \describe{
 \item{\code{\link{dibbler.data}}}{to prepare the input data.}
 }
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

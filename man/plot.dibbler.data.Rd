@@ -45,10 +45,9 @@ plot(input, cex=2, color.internal=FALSE)
 }
 
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \code{\link[network]{plot.network}} in the package \code{network}.
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

@@ -12,9 +12,6 @@ network2igraph(x)
 \description{
 The function convert a directed graph with the network format into an igraph object.
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \describe{
 Conversions in dibbler include:
@@ -27,4 +24,6 @@ Conversions in dibbler include:
 \item{\code{\link{network2visNetwork}}}{}
 }
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

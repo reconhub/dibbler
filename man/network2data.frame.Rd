@@ -12,9 +12,6 @@ network2data.frame(x)
 \description{
 The function convert a directed graph with the network format into a data.frame of edge lists (from, to)
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \describe{
 Conversions in dibbler include:
@@ -27,4 +24,6 @@ Conversions in dibbler include:
 \item{\code{\link{network2visNetwork}}}{}
 }
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

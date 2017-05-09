@@ -38,12 +38,11 @@ plot(out$graph, vertex.label="",
 main="dibbler: inferred pathogen distribution")
 }
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \describe{
 \item{\code{\link{dibbler.data}}}{to prepare the input data.}
 }
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

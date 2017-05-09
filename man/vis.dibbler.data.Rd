@@ -60,10 +60,9 @@ vis.dibbler.data(input)
 }
 
 }
-\author{
-Thibaut Jombart \email{thibautjombart@gmail.com}
-}
 \seealso{
 \code{\link[visNetwork]{visNetwork}} in the package \code{visNetwork}.
 }
-
+\author{
+Thibaut Jombart \email{thibautjombart@gmail.com}
+}

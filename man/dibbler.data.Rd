@@ -42,4 +42,3 @@ x <- with(Salmonella, dibbler.data(graph=graph, group=cluster))
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}
 }
-

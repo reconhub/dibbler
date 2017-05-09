@@ -2,8 +2,9 @@
 % Please edit documentation in R/dibbler.pal.R
 \name{dibbler.pal1}
 \alias{dibbler.pal1}
-\alias{dibbler.pal2}
 \alias{palettes}
+\alias{dibbler.pal2}
+\alias{dibbler.pal2}
 \title{Color palettes used in dibbler}
 \usage{
 dibbler.pal1(n)
@@ -25,4 +26,3 @@ plot(1:10, col=dibbler.pal2(10), pch=20, cex=6, main="dibbler.pal2")
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}
 }
-

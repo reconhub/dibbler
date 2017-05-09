@@ -19,4 +19,3 @@ Under development, do not use!!
 \author{
 Thibaut Jombart (\email{thibautjombart@gmail.com})
 }
-

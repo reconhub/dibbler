@@ -19,4 +19,3 @@ This dataset covers a food-borne outbreak of Salmonella Enteritidis PT59 investi
 Thomas Inns \email{Thomas.Inns@phe.gov.uk}, Philip Ashton, Tim Dallman, Roberto Vivancos
 }
 \keyword{datasets}
-

@@ -29,4 +29,3 @@ dibbler.graph.opt()
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}
 }
-
