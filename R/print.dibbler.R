@@ -27,5 +27,8 @@ print.dibbler <- function(x, ...){
     cat("\n  // network\n\n")
     print(dplyr::tbl_df(x$contacts))
 
+    cat("\n node types:")
+    print(x$node_type)
+
     cat("\n")
 }

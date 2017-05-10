@@ -41,7 +41,7 @@ This function plots dibbler's input data as a network, using different symbols a
 }
 \examples{
 
-if(require(igraph) && require(network)){
+if(require(igraph)){
 
 ## generate graph from edge list
 Salmonella
