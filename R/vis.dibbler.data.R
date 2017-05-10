@@ -26,7 +26,7 @@
 #'
 #' @examples
 #'
-#' if(require(igraph) && require(network)){
+#' if(require(igraph)){
 #'
 #' ## generate graph from edge list
 #' Salmonella

@@ -74,14 +74,7 @@ make_dibbler <- function(net, nodes_data, from = 1L, to = 2L, id = 1L) {
     node_type[ids %in% terminal] <- "terminal"
 
     out$node_type <- node_type
-    
-    ## supp_node_data <- data.frame(id = ids,
-    ##                              stringsAsFactors = FALSE)
-    ## supp_node_data$node_type <- node_type
-    ## out$linelist <- merge(out$linelist,
-    ##                       supp_node_data,
-    ##                       by = "id", all = TRUE)
-    
+       
     class(out) <- c("dibbler", "epicontacts")
     return(out)
 }
