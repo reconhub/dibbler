@@ -63,9 +63,9 @@ make_dibbler <- function(net, nodes_data, from = 1L, to = 2L, id = 1L) {
 
     ## determine the type of nodes: entry, internal, or terminal
     
-    ids <- get_id(out, "contacts")
-    in_deg <- get_degree(x, "in")
-    out_deg <- get_degree(x, "out")
+    ids <- epicontacts::get_id(out, "contacts")
+    in_deg <- epicontacts::get_degree(out, "in")
+    out_deg <- epicontacts::get_degree(out, "out")
     entry <- names(which(in_deg == 0L & out_deg > 0))
     terminal <- names(which(in_deg > 0 & out_deg == 0L))
     node_type <- rep("internal", length(ids))
@@ -74,7 +74,7 @@ make_dibbler <- function(net, nodes_data, from = 1L, to = 2L, id = 1L) {
     node_type[ids %in% terminal] <- "terminal"
 
     out$node_type <- node_type
-       
+    
     class(out) <- c("dibbler", "epicontacts")
     return(out)
 }

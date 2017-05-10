@@ -33,16 +33,6 @@ This function plots dibbler's input data as a network, using different symbols a
 }
 \examples{
 
-if(require(igraph) && require(network)){
-
-## generate graph from edge list
-Salmonella
-g <- igraph::graph.data.frame(Salmonella$graph)
-
-input <- dibbler.data(graph=g, group=Salmonella$cluster)
-plot(input)
-plot(input, cex=2, color.internal=FALSE)
-}
 
 }
 \seealso{
