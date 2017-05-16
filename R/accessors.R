@@ -33,6 +33,7 @@
 
 #' @rdname accessors
 #' @export
+#' @param ... Further arguments passed to other methods.
 
 "[.dibbler" <- function(x, ...) {
     out <- utils::getS3method("[", "epicontacts")(x, ...)

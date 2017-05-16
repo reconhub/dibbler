@@ -10,7 +10,7 @@
 #'
 #' @export
 #'
-#' @return a list of data suitable for input for \code{\link{dibbler}}
+#' @return a list of data suitable for input for \code{dibbler}
 #'
 #' @param net A \code{data.frame} defining the edges of the food distribution
 #' network with at least two columns representing source and receiver nodes
