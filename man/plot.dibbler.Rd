@@ -4,27 +4,38 @@
 \alias{plot.dibbler}
 \title{Plot input data for dibbler}
 \usage{
-\method{plot}{dibbler}(x, y = NULL, ...)
+\method{plot}{dibbler}(x, y = NULL, col_pal = dibbler_pal1, ...)
 }
 \arguments{
-\item{x}{an input dataset as returned by \code{dibbler.data}}
+\item{x}{A \code{dibbler} object.}
 
-\item{y}{unused argument, for compatibility with the \code{plot} generic}
+\item{y}{An optional variable from the linelist defining groups used to color
+the network.}
 
-\item{...}{further arguments to be passed to \code{plot.network}}
-
-\item{cex}{a size factor for the nodes of the network}
-
-\item{lab.cex}{a size factor for the tip annotations (genetic clusters)}
-
-\item{color.internal}{a logical indicating whether internal nodes and their descending edges should be colored}
-
-\item{col.pal1}{a color palette to be used for the genetic clusters (tips)}
-
-\item{col.pal2}{a color palette to be used for identifying internal nodes}
+\item{col_pal}{A color palette to be used for the groups; defaults to
+\code{dibbler_pal1}.}
 }
 \description{
-This function plots dibbler's input data as a network, using different symbols and colors for different types of nodes. It uses the package \code{network}.
+This function plots dibbler's input data as a network, using different
+symbols and colors for different types of nodes. It uses the package
+\code{network}.
+}
+\examples{
+
+\dontrun{
+if (require(outbreaks)) {
+
+  v_data <- s_enteritidis_pt59$graph
+  n_data <- data.frame(id = names(s_enteritidis_pt59$cluster),
+                       cluster = s_enteritidis_pt59$cluster)
+
+  x <- make_dibbler(v_data, n_data)
+  x
+
+  plot(x)
+  plot(x, "cluster")
+}
+}
 }
 \author{
 Thibaut Jombart \email{thibautjombart@gmail.com}
