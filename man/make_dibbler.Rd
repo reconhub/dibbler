@@ -29,7 +29,7 @@ on the reported cases.}
 against the nodes of the network described in \code{net}.}
 }
 \value{
-a list of data suitable for input for \code{\link{dibbler}}
+a list of data suitable for input for \code{dibbler}
 }
 \description{
 This function combines data of a food distribution network (including cases

@@ -23,10 +23,10 @@ print.dibbler <- function(x, ...){
 
     cat("\n  // linelist\n\n")
     ## print(dplyr::tbl_df(x$linelist))
-    print(head(x$linelist))
+    print(utils::head(x$linelist))
     
     cat("\n  // network\n\n")
-    print(head(x$contacts))
+    print(utils::head(x$contacts))
     ## print(dplyr::tbl_df(x$contacts))
 
     cat("\n // node types\n")

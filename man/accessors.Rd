@@ -14,6 +14,8 @@
 \item{x}{A \code{dibbler} object.}
 
 \item{name}{The name of the slot requested.}
+
+\item{...}{Further arguments passed to other methods.}
 }
 \description{
 These functions allow to access the content of \code{dibbler} objects.
