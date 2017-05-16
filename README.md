@@ -41,10 +41,6 @@ Then, to load the package, use:
 library("dibbler")
 ```
 
-```
-## Error in library("dibbler"): there is no package called 'dibbler'
-```
-
 
 A short demo
 ------------
@@ -108,7 +104,7 @@ x <- make_dibbler(net = s_enteritidis_pt59$graph, nodes_data = case_data)
 ```
 
 ```
-## Error in make_dibbler(net = s_enteritidis_pt59$graph, nodes_data = case_data): could not find function "make_dibbler"
+## Error in epicontacts::make_epicontacts(nodes_data, net, from = from, to = to, : object 'case_data' not found
 ```
 
 ```r
