@@ -6,6 +6,8 @@
 #'
 #' @author Thibaut Jombart \email{thibautjombart@@gmail.com}
 #'
+#' @aliases plot.dibbler
+#' 
 #' @importFrom graphics plot
 #' 
 #' @importFrom magrittr "%>%"
@@ -16,7 +18,7 @@
 #' the network.
 #'
 #' @param col_pal A color palette to be used for the groups; defaults to
-#' \code{dibbler_pal1}.
+#' \code{dibbler_pal2}.
 #'
 #' @param ... Further arguments passed to the \code{plot.epicontacts} method.
 #' 
@@ -39,7 +41,7 @@
 #' }
 #' }
 
-plot.dibbler <- function(x, y = NULL, col_pal = dibbler_pal1,
+plot.dibbler <- function(x, y = NULL, col_pal = dibbler_pal2,
                          ...){
     df_to_add <- data.frame(id = names(x$node_type),
                             group = factor(x$node_type))
