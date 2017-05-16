@@ -1,6 +1,7 @@
-[![Travis-CI Build Status](https://travis-ci.org/thibautjombart/dibbler.png?branch=master)](https://travis-ci.org/thibautjombart/dibbler)
+[![Travis-CI Build Status](https://travis-ci.org/reconhub/dibbler.png?branch=master)](https://travis-ci.org/reconhub/dibbler)
+[![Build status](https://ci.appveyor.com/api/projects/status/02rb8c5j288gg6vg/branch/master?svg=true)](https://ci.appveyor.com/project/thibautjombart/dibbler/branch/master)
+[![codecov](https://codecov.io/gh/reconhub/dibbler/branch/master/graph/badge.svg)](https://codecov.io/gh/reconhub/dibbler)
 
-[![codecov.io](https://codecov.io/github/thibautjombart/dibbler/coverage.svg?branch=master)](https://codecov.io/github/thibautjombart/dibbler?branch=master)
 
 
 ```{r setup, echo=FALSE}
