@@ -18,6 +18,8 @@
 #' @param col_pal A color palette to be used for the groups; defaults to
 #' \code{dibbler_pal1}.
 #'
+#' @param ... Further arguments passed to the \code{plot.epicontacts} method.
+#' 
 #' @export
 #'
 #' @examples
@@ -89,7 +91,7 @@ plot.dibbler <- function(x, y = NULL, col_pal = dibbler_pal1,
                            color = colors[i])
     }
     
-    out <- getS3method("plot", "epicontacts")(x, y = NULL, ...)
+    out <- utils::getS3method("plot", "epicontacts")(x, y = NULL, ...)
 
     for (i in seq_len(nb_groups)) {
         out <- out %>%

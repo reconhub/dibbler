@@ -14,6 +14,8 @@ the network.}
 
 \item{col_pal}{A color palette to be used for the groups; defaults to
 \code{dibbler_pal1}.}
+
+\item{...}{Further arguments passed to the \code{plot.epicontacts} method.}
 }
 \description{
 This function plots dibbler's input data as a network, using different

@@ -14,9 +14,15 @@
 #'
 #' @examples
 #'
-#' plot(1:4, cex=8, pch=20, col=dibbler.pal1(4), main="dibbler_pal1")
-#' plot(1:20, col=dibbler_pal1(20), pch=20, cex=6, main="dibbler_pal1")
-#' plot(1:10, col=dibbler_pal2(10), pch=20, cex=6, main="dibbler_pal2")
+#' plot(1:4, cex = 8, pch = 20, col = dibbler_pal1(4),
+#'      main = "dibbler_pal1")
+#' 
+#' plot(1:20, col = dibbler_pal1(20),
+#'      pch = 20, cex = 6, main = "dibbler_pal1")
+#' 
+#' plot(1:10, col = dibbler_pal2(10), pch = 20,
+#'      cex = 6, main = "dibbler_pal2")
+
 dibbler_pal1 <- function(n){
     if(!is.numeric(n)) stop("n is not a number")
     colors <- c("#cc6666", "#ff8566", "#ffb366","#33cccc",
