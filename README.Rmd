@@ -51,6 +51,7 @@ outbreak dataset, distributed in the *outbreaks* package as
 `s_enteritidis_pt59`. The function `make_dibbler` will match the structure of
 the network and the case data, and create a `dibbler` object:
 ```{r make_dibbler}
+library("outbreaks")
 
 names(s_enteritidis_pt59$graph)
 head(s_enteritidis_pt59$graph)
