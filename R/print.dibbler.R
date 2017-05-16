@@ -7,7 +7,7 @@
 #'
 #' @author Thibaut Jombart (\email{thibautjombart@@gmail.com})
 #'
-#' @param x A \code{\link{dibbler}} object.
+#' @param x A \code{dibbler} object.
 #'
 #' @param ... further parameters to be passed to other methods (currently not
 #' used)

@@ -7,7 +7,7 @@
 \method{print}{dibbler}(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link{dibbler}} object.}
+\item{x}{A \code{dibbler} object.}
 
 \item{...}{further parameters to be passed to other methods (currently not
 used)}
