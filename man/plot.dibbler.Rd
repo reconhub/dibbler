@@ -4,7 +4,7 @@
 \alias{plot.dibbler}
 \title{Plot input data for dibbler}
 \usage{
-\method{plot}{dibbler}(x, y = NULL, col_pal = dibbler_pal1, ...)
+\method{plot}{dibbler}(x, y = NULL, col_pal = dibbler_pal2, ...)
 }
 \arguments{
 \item{x}{A \code{dibbler} object.}
@@ -13,7 +13,7 @@
 the network.}
 
 \item{col_pal}{A color palette to be used for the groups; defaults to
-\code{dibbler_pal1}.}
+\code{dibbler_pal2}.}
 
 \item{...}{Further arguments passed to the \code{plot.epicontacts} method.}
 }
