@@ -1,3 +1,5 @@
 ^\.travis\.yml$
 README.Rmd
 README.md
+README.html
+figs
