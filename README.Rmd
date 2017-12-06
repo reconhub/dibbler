@@ -6,7 +6,7 @@
 
 ```{r setup, echo=FALSE}
 # set global chunk options: images will be 7x7 inches
-knitr::opts_chunk$set(fig.width=7, fig.height=7, fig.path="man/figs/", warning=FALSE)
+knitr::opts_chunk$set(fig.width=7, fig.height=7, fig.path="figs/", warning=FALSE)
 options(digits = 4)
 ```
 
